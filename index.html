@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AL-KAHFI SMART SCHOOL - V1.18 PERAPIHAN FONT BIDANG</title>
+<title>AL-KAHFI SMART SCHOOL - V1.20</title>
 <style>
 :root{--p:#176b52;--p2:#0f5132;--bg:#f6f8f7;--card:#fff;--text:#1e2b26;--muted:#68756f;--line:#e4eae7;--warn:#b7791f}
 *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
@@ -93,9 +93,8 @@ table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;bor
 <div id="loginView" class="login">
  <div class="login-card">
   <div class="brand"><div class="mark">AK</div><h1>AL-KAHFI SMART SCHOOL</h1><p>Sistem Digital Terpadu KOBER AL-KAHFI</p></div>
-  <label>Username</label><input id="loginUsername" autocomplete="username" placeholder="Masukkan username">
-  <label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Masukkan password">
-  <div class="muted" style="margin-top:10px">Administrator dan Guru menggunakan akun masing-masing. Orang Tua menggunakan username <b>ortu</b> dan password berupa nama lengkap anak.</div>
+  <label>Masuk sebagai</label><select id="roleSelect" onchange="updateLoginIdentity()"><option value="admin">Administrator / Kepala KOBER</option><option value="teacher">Guru</option><option value="parent">Orang Tua</option></select>
+  <div id="loginIdentity"></div>
   <button class="primary" style="width:100%;margin-top:20px" onclick="login()">Masuk ke Aplikasi</button>
  </div>
 </div>
@@ -115,8 +114,17 @@ table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;bor
 </div>
 <div id="modal" class="modal hidden"><div class="modal-box"><div class="modal-head"><h3 id="modalTitle"></h3><button class="close" onclick="closeModal()">×</button></div><div id="modalBody"></div></div></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const KEY='alkahfiSmartSchoolV1';
+const SUPABASE_URL='https://zejcwhbpbtqnltqyhhry.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_gSdbyg0JcvUEnXSu_7ci9Q_ZLcJa89B';
+const SUPABASE_STATE_ID='alkahfi-smart-school-v1';
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+let syncReady=false;
+let syncTimer=null;
+let syncInFlight=false;
+let syncQueued=false;
 const initial={students:[
 {id:'s1',name:'Ahmad Fikri',birth:'2022-03-12',gender:'Laki-laki',class:'KOBER A',parent:'Bunda Siti',phone:'081234567890'},
 {id:'s2',name:'Aisyah Zahra',birth:'2022-06-20',gender:'Perempuan',class:'KOBER A',parent:'Bunda Rina',phone:'081234567891'},
@@ -129,9 +137,89 @@ let db=JSON.parse(localStorage.getItem(KEY)||'null')||initial;
 db.students.forEach(s=>{if(s.class==='KOBER A')s.class='A1';if(s.class==='KOBER B')s.class='B1';});
 if(!Array.isArray(db.childResults)) db.childResults=[];
 if(!Array.isArray(db.reports)) db.reports=[];
-save();
 let session=null;
-function save(){localStorage.setItem(KEY,JSON.stringify(db))}
+function save(){
+ localStorage.setItem(KEY,JSON.stringify(db));
+ if(syncReady) queueRemoteSave();
+}
+function queueRemoteSave(){
+ syncQueued=true;
+ clearTimeout(syncTimer);
+ syncTimer=setTimeout(flushRemoteSave,250);
+}
+async function flushRemoteSave(){
+ if(!syncReady||syncInFlight)return;
+ syncInFlight=true; syncQueued=false;
+ try{
+   const payload={app_id:SUPABASE_STATE_ID,data:db,updated_at:new Date().toISOString()};
+   const {error}=await supabaseClient.from('alkahfi_smart_school_state').upsert(payload,{onConflict:'app_id'});
+   if(error) throw error;
+   localStorage.setItem(KEY+'_remoteUpdatedAt',payload.updated_at);
+ }catch(err){console.error('Supabase sync gagal:',err);syncQueued=true;}
+ finally{syncInFlight=false;if(syncQueued)queueRemoteSave();}
+}
+async function pullRemoteState(){
+ if(!syncReady||syncInFlight)return;
+ try{
+   const {data,error}=await supabaseClient.from('alkahfi_smart_school_state').select('data,updated_at').eq('app_id',SUPABASE_STATE_ID).maybeSingle();
+   if(error||!data||!data.data)return;
+   const localStamp=localStorage.getItem(KEY+'_remoteUpdatedAt')||'';
+   if(data.updated_at && data.updated_at!==localStamp){
+     db=data.data;
+     if(!Array.isArray(db.students))db.students=[];
+     if(!Array.isArray(db.teachers))db.teachers=[];
+     if(!Array.isArray(db.attendance))db.attendance=[];
+     if(!Array.isArray(db.activities))db.activities=[];
+     if(!Array.isArray(db.notes))db.notes=[];
+     if(!Array.isArray(db.portfolios))db.portfolios=[];
+     if(!Array.isArray(db.announcements))db.announcements=[];
+     if(!Array.isArray(db.childResults))db.childResults=[];
+     if(!Array.isArray(db.reports))db.reports=[];
+     db.students.forEach(s=>{if(s.class==='KOBER A')s.class='A1';if(s.class==='KOBER B')s.class='B1';});
+     localStorage.setItem(KEY,JSON.stringify(db));
+     localStorage.setItem(KEY+'_remoteUpdatedAt',data.updated_at);
+     if(session){updateLoginIdentity();renderNav();render();}
+   }
+ }catch(err){console.error('Supabase pull gagal:',err)}
+}
+function startRemotePolling(){
+ setInterval(pullRemoteState,5000);
+}
+async function initRemoteSync(){
+ try{
+   const {data,error}=await supabaseClient.from('alkahfi_smart_school_state').select('data,updated_at').eq('app_id',SUPABASE_STATE_ID).maybeSingle();
+   if(error) throw error;
+   if(data&&data.data){
+     db=data.data;
+     if(!Array.isArray(db.students))db.students=[];
+     if(!Array.isArray(db.teachers))db.teachers=[];
+     if(!Array.isArray(db.attendance))db.attendance=[];
+     if(!Array.isArray(db.activities))db.activities=[];
+     if(!Array.isArray(db.notes))db.notes=[];
+     if(!Array.isArray(db.portfolios))db.portfolios=[];
+     if(!Array.isArray(db.announcements))db.announcements=[];
+     if(!Array.isArray(db.childResults))db.childResults=[];
+     if(!Array.isArray(db.reports))db.reports=[];
+     db.students.forEach(s=>{if(s.class==='KOBER A')s.class='A1';if(s.class==='KOBER B')s.class='B1';});
+     localStorage.setItem(KEY,JSON.stringify(db));
+     if(data.updated_at)localStorage.setItem(KEY+'_remoteUpdatedAt',data.updated_at);
+   }else{
+     const payload={app_id:SUPABASE_STATE_ID,data:db,updated_at:new Date().toISOString()};
+     const {error:upsertError}=await supabaseClient.from('alkahfi_smart_school_state').upsert(payload,{onConflict:'app_id'});
+     if(upsertError)throw upsertError;
+     localStorage.setItem(KEY+'_remoteUpdatedAt',payload.updated_at);
+   }
+   syncReady=true;
+   startRemotePolling();
+   updateLoginIdentity();
+   if(session){renderNav();render();}
+ }catch(err){
+   console.error('Supabase initialization failed:',err);
+   syncReady=false;
+   updateLoginIdentity();
+   alert('Sinkronisasi online belum tersambung. Aplikasi tetap menggunakan data lokal sementara. Periksa pengaturan akses Supabase.');
+ }
+}
 // Sinkronisasi Kegiatan ↔ Perkembangan:
 // catatan perkembangan otomatis hanya boleh ada selama masih ada kegiatan pada kelas anak.
 function hasActivitiesForStudent(studentId){
@@ -172,35 +260,35 @@ const menus={
 };
 let page='dashboard';
 let pageHistory=[];
-// Akun login: hanya sistem login yang diubah; seluruh data dan fitur aplikasi tetap memakai struktur asli.
-const LOGIN_ACCOUNTS={admin:{username:'admin',password:'admin123'},teacher:{username:'guru',password:'guru123'},parent:{username:'ortu'}};
-function updateLoginIdentity(){}
-function login(){
- const username=(document.getElementById('loginUsername')?.value||'').trim().toLowerCase();
- const password=(document.getElementById('loginPassword')?.value||'').trim();
- if(!username||!password){alert('Silakan isi username dan password.');return}
- if(username===LOGIN_ACCOUNTS.admin.username && password===LOGIN_ACCOUNTS.admin.password){
-   session={role:'admin',name:'Administrator AL-KAHFI'};
- }else if(username===LOGIN_ACCOUNTS.teacher.username && password===LOGIN_ACCOUNTS.teacher.password){
-   // Satu akun Guru untuk seluruh guru. Hak akses data tetap seperti menu Guru, tanpa mengubah data kelas.
-   session={role:'teacher',name:'Guru AL-KAHFI'};
- }else if(username===LOGIN_ACCOUNTS.parent.username){
-   const normalized=password.toLocaleLowerCase('id-ID');
-   const matches=db.students.filter(s=>(s.name||'').trim().toLocaleLowerCase('id-ID')===normalized);
-   if(matches.length===1){
-     const student=matches[0];
-     session={role:'parent',name:student.name,studentId:student.id,className:student.class};
-   }else if(matches.length>1){
-     alert('Terdapat lebih dari satu anak dengan nama lengkap yang sama. Hubungi administrator.');return;
-   }else{
-     alert('Nama lengkap anak tidak ditemukan. Silakan masukkan nama lengkap anak sesuai Data Anak.');return;
-   }
+function updateLoginIdentity(){
+ const role=roleSelect.value;
+ if(role==='admin'){
+   loginIdentity.innerHTML='<label>Nama Administrator</label><input id="loginName" value="Administrator AL-KAHFI" placeholder="Masukkan nama administrator">';
+ }else if(role==='teacher'){
+   const classes=CLASS_OPTIONS;
+   loginIdentity.innerHTML='<label>Pilih Kelas</label><select id="loginName">'+classes.map(c=>`<option value="${c}">Kelas ${c}</option>`).join('')+'</select><div class="muted" style="margin-top:7px">Akses guru disesuaikan dengan kelas yang dipilih.</div>';
  }else{
-   alert('Username atau password salah.');return;
+   loginIdentity.innerHTML='<label>Pilih Nama Anak</label><select id="loginName">'+db.students.map(s=>`<option value="${s.id}">${s.name} — Kelas ${s.class}</option>`).join('')+'</select>';
  }
- loginView.classList.add('hidden');appView.classList.remove('hidden');renderNav();render();
 }
-function logout(){session=null;page='dashboard';pageHistory=[];appView.classList.add('hidden');loginView.classList.remove('hidden');const u=document.getElementById('loginUsername'),p=document.getElementById('loginPassword');if(u)u.value='';if(p)p.value='';}
+function login(){
+ if(!syncReady){alert('Sinkronisasi data sedang disiapkan. Tunggu beberapa detik lalu coba lagi.');return}
+ const role=roleSelect.value;
+ const value=loginName?loginName.value:'';
+ if(role==='teacher'){
+   const className=value;
+   if(!className){alert('Silakan pilih kelas.');return}
+   session={role,name:`Guru Kelas ${className}`,className};
+ }else if(role==='parent'){
+   const student=db.students.find(s=>s.id===value);
+   if(!student){alert('Silakan pilih nama anak.');return}
+   session={role,name:student.name,studentId:student.id,className:student.class};
+ }else{
+   session={role,name:value||'Administrator AL-KAHFI'};
+ }
+ loginView.classList.add('hidden');appView.classList.remove('hidden');renderNav();render()
+}
+function logout(){session=null;page='dashboard';pageHistory=[];appView.classList.add('hidden');loginView.classList.remove('hidden');updateLoginIdentity()}
 function renderNav(){let m=menus[session.role];sideNav.innerHTML=m.map(x=>`<button class="${page===x[0]?'active':''}" onclick="go('${x[0]}')">${x[1]} ${x[2]}</button>`).join('');bottomNav.innerHTML=m.map((x,i)=>`<button class="${page===x[0]?'active':''}" onclick="go('${x[0]}')">${x[1]}<br>${x[2]}</button>`).join('')}
 function go(p){
  if(p===page)return;
@@ -229,8 +317,8 @@ function render(){
 }
 function countPresent(){return db.attendance.filter(x=>x.date===today()&&x.status==='Hadir').length}
 function dashboard(){let c=document.getElementById('content');if(session.role==='parent'){let s=db.students.find(x=>x.id===session.studentId)||db.students[0];c.innerHTML=`<div class="cards"><div class="card"><div class="muted">Anak</div><div class="metric" style="font-size:20px">${s.name}</div><div class="muted">${s.class}</div></div><div class="card"><div class="muted">Kehadiran Hari Ini</div><div class="metric">${db.attendance.find(x=>x.studentId===s.id&&x.date===today())?.status||'Belum dicatat'}</div></div></div><div class="section"><div class="section-head"><h3>Informasi Terbaru</h3></div>${announcementList(true)}</div>`;return}
-const teacherStudents=db.students;
- const teacherActivities=db.activities;
+const teacherStudents=session.role==='teacher'?db.students.filter(s=>s.class===session.className):db.students;
+ const teacherActivities=session.role==='teacher'?db.activities.filter(a=>a.className===session.className):db.activities;
  const teacherNotes=session.role==='teacher'?db.notes.filter(n=>teacherStudents.some(s=>s.id===n.studentId)):db.notes;
  let cards=session.role==='admin'?[['Anak Aktif',db.students.length],['Guru',db.teachers.length],['Hadir Hari Ini',countPresent()],['Kegiatan Tercatat',db.activities.length]]:[['Anak di Kelas',teacherStudents.length],['Hadir Hari Ini',countPresent()],['Kegiatan Saya',teacherActivities.length],['Catatan Perkembangan',teacherNotes.length]];
 c.innerHTML=`<div class="cards">${cards.map(x=>`<div class="card"><div class="muted">${x[0]}</div><div class="metric">${x[1]}</div></div>`).join('')}</div>
@@ -247,7 +335,7 @@ function students(){
    return;
  }
  const currentClass=window.studentClassFilter||'Semua';
- const baseList=session.role==='parent'?[db.students.find(x=>x.id===session.studentId)].filter(Boolean):db.students;
+ const baseList=session.role==='parent'?[db.students.find(x=>x.id===session.studentId)].filter(Boolean):session.role==='teacher'?db.students.filter(s=>s.class===session.className):db.students;
  const list=baseList.filter(s=>currentClass==='Semua'||s.class===currentClass);
  content.innerHTML=`<div class="section"><div class="section-head"><h3>Data Anak</h3>${session.role==='admin'?'<button class="primary" onclick="openStudent()">+ Tambah Anak</button>':''}</div>
  ${session.role!=='parent'?`<div style="max-width:320px;margin-bottom:16px"><label>Cari berdasarkan kelas</label><select onchange="window.studentClassFilter=this.value;students()"><option value="Semua" ${currentClass==='Semua'?'selected':''}>Semua Kelas</option>${getClassOptions().map(c=>`<option value="${c}" ${currentClass===c?'selected':''}>Kelas ${c}</option>`).join('')}</select></div>`:''}
@@ -523,7 +611,7 @@ function saveChildResults(activityId){
 
 function accessibleStudents(){
  if(session.role==='parent') return db.students.filter(s=>s.id===session.studentId);
- if(session.role==='teacher') return db.students;
+ if(session.role==='teacher') return db.students.filter(s=>s.class===session.className);
  return db.students;
 }
 function development(){
@@ -685,7 +773,7 @@ function openActivity(){
    </div>`).join('');
  modalBody.innerHTML=`
  <label>Tanggal</label><input id="actDate" type="date" value="${today()}">
- <label>Kelas</label><select id="actClass">${getClassOptions().map(c=>`<option value="${c}">Kelas ${c}</option>`).join('')}</select>
+ <label>Kelas</label><select id="actClass">${(session.role==='teacher'?[session.className]:getClassOptions()).map(c=>`<option value="${c}">Kelas ${c}</option>`).join('')}</select>
  <label>Kegiatan Hari Ini</label>
  <div class="notice">Centang kegiatan sesuai urutan pelaksanaannya. Untuk setiap kegiatan, cukup isi Materi; Metode, Media, dan Target akan tergenerate otomatis.</div>
  <div class="list" style="max-height:520px;overflow:auto;padding-right:4px">${activityCards}</div>
@@ -832,7 +920,7 @@ function portfolio(){
 }
 
 function getReportScope(){
- const className='';
+ const className=session.role==='teacher'?session.className:'';
  const students=session.role==='parent'
    ?db.students.filter(s=>s.id===session.studentId)
    :(className?db.students.filter(s=>s.class===className):db.students);
@@ -1032,5 +1120,6 @@ function openAnnouncement(){modalTitle.textContent='Buat Informasi';modalBody.in
 function saveAnnouncement(){db.announcements.push({id:'a'+Date.now(),title:annTitle.value,body:annBody.value,target:annTarget.value,date:today()});save();closeModal();info()}
 function closeModal(){modal.classList.add('hidden')}
 updateLoginIdentity();
+initRemoteSync();
 </script>
 </body></html>
