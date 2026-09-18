@@ -445,7 +445,11 @@ function updateLoginIdentity(){
  const old=document.getElementById('loginName');
  const oldValue=old?.value||'';
  if(role==='admin'){
-   loginIdentity.innerHTML='<label>Password</label><input id="loginName" type="password" autocomplete="current-password" placeholder="Masukkan password">';
+   // Jangan membangun ulang field password setiap kali sinkronisasi/render berjalan.
+   // Jika field sudah ada, pertahankan nilainya agar ketikan pengguna tidak hilang.
+   if(!old || old.type!=='password'){
+     loginIdentity.innerHTML='<label>Password</label><input id="loginName" name="admin_access_code" type="password" value="" autocomplete="new-password" inputmode="numeric" maxlength="5" readonly onfocus="this.removeAttribute(\'readonly\');" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" placeholder="Masukkan password">';
+   }
  }else if(role==='teacher'){
    const classes=CLASS_OPTIONS;
    const selected=classes.includes(oldValue)?oldValue:(window.loginSelectedClass&&classes.includes(window.loginSelectedClass)?window.loginSelectedClass:classes[0]);
@@ -462,6 +466,13 @@ function updateLoginIdentity(){
    loginIdentity.innerHTML='<label>Pilih Kelas</label><select id="loginParentClass" onchange="window.loginSelectedParentClass=this.value;updateParentStudentOptions()">'+classes.map(c=>`<option value="${c}" ${c===availableClass?'selected':''}>Kelas ${c}</option>`).join('')+'</select><label style="margin-top:14px;display:block">Nama Lengkap Anak</label><select id="loginName" onchange="window.loginSelectedStudentName=this.value">'+(childOptions.length?childOptions.map(s=>`<option value="${String(s.name).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}" ${normalizeLoginName(s.name)===normalizeLoginName(selectedStudent)?'selected':''}>${String(s.name).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</option>`).join(''):'<option value="">Belum ada anak pada kelas ini</option>')+'</select>';
    window.loginSelectedParentClass=availableClass;
    window.loginSelectedStudentName=selectedStudent;
+ }
+}
+function clearAdminPasswordField(){
+ const el=document.getElementById('loginName');
+ if(document.getElementById('roleSelect')?.value==='admin' && el?.type==='password'){
+   el.value='';
+   el.setAttribute('readonly','readonly');
  }
 }
 function updateParentStudentOptions(){
@@ -497,7 +508,7 @@ function login(){
  }
  loginView.classList.add('hidden');appView.classList.remove('hidden');renderNav();render()
 }
-function logout(){session=null;page='dashboard';pageHistory=[];appView.classList.add('hidden');loginView.classList.remove('hidden');updateLoginIdentity()}
+function logout(){session=null;page='dashboard';pageHistory=[];appView.classList.add('hidden');loginView.classList.remove('hidden');updateLoginIdentity();setTimeout(clearAdminPasswordField,0)}
 function renderNav(){let m=menus[session.role];sideNav.innerHTML=m.map(x=>`<button type="button" class="${page===x[0]?'active':''}" onclick="go('${x[0]}');return false;">${x[1]} ${x[2]}</button>`).join('');bottomNav.innerHTML=m.map((x,i)=>`<button type="button" class="${page===x[0]?'active':''}" onclick="go('${x[0]}');return false;">${x[1]}<br>${x[2]}</button>`).join('')}
 function go(p){
  // Navigasi selalu diproses agar tombol menu tetap responsif, termasuk saat pengguna
