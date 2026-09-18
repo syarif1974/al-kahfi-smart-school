@@ -15,8 +15,23 @@ button{border:0;border-radius:11px;padding:12px 16px;font:inherit;font-weight:70
 .shell{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{background:#123c2e;color:#fff;padding:22px 14px;display:flex;flex-direction:column}.side-brand{padding:10px 12px 25px;font-weight:800}.side-logo{width:112px;height:112px;object-fit:contain;display:block;margin:0 auto 12px;background:#fff;border-radius:14px;padding:6px}.side-brand .brand-name{display:block}.side-brand small{display:block;font-weight:400;opacity:.7;margin-top:5px}.nav button{width:100%;text-align:left;background:transparent;color:#d9e8e1;margin:4px 0}.nav button.active,.nav button:hover{background:#ffffff18;color:#fff}.sidebar .logout{margin-top:auto;background:#ffffff14;color:#fff}
 main{padding:28px;max-width:1500px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:24px}.page-head{display:flex;align-items:flex-start;gap:10px}.top h2{margin:0}.top p{margin:5px 0 0;color:var(--muted)}.top-right{display:flex;align-items:center;gap:10px;flex-shrink:0}.top-back{min-width:120px}
 .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}.metric{font-size:28px;font-weight:800;margin-top:8px}.muted{color:var(--muted);font-size:13px}
-.section{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:18px}.section-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}
+.section{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:18px}.section-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px;min-width:0}.section-head>div:first-child{min-width:0}.section-head>button{flex:0 0 auto;white-space:nowrap}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* Menu Anak - tabel presisi: 7 kolom tanpa kolom Kelas */
+.student-data-table{width:100%!important;min-width:0!important;table-layout:fixed;border-collapse:collapse}
+.student-data-table th,.student-data-table td{padding:9px 7px;font-size:13px;vertical-align:middle;overflow-wrap:anywhere;box-sizing:border-box}
+.student-data-table th:nth-child(1),.student-data-table td:nth-child(1){width:5%;text-align:center}
+.student-data-table th:nth-child(2),.student-data-table td:nth-child(2){width:22%}
+.student-data-table th:nth-child(3),.student-data-table td:nth-child(3){width:12%;white-space:nowrap}
+.student-data-table th:nth-child(4),.student-data-table td:nth-child(4){width:12%}
+.student-data-table th:nth-child(5),.student-data-table td:nth-child(5){width:17%}
+.student-data-table th:nth-child(6),.student-data-table td:nth-child(6){width:14%;white-space:nowrap}
+.student-data-table th:nth-child(7),.student-data-table td:nth-child(7){width:18%}
+.student-data-table .actions{display:flex;flex-wrap:nowrap;gap:4px;align-items:center;justify-content:flex-start;margin-top:0;white-space:nowrap;overflow:visible}
+.student-data-table .actions button{padding:6px 7px!important;font-size:11px!important;line-height:1.1;white-space:nowrap;flex:0 0 auto}
+@media (max-width:1200px){.student-data-table th,.student-data-table td{padding:7px 5px;font-size:12px}.student-data-table .actions{gap:3px}.student-data-table .actions button{padding:5px 6px!important;font-size:10px!important}}
+
 table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}th{color:var(--muted)}
 .empty{padding:28px;text-align:center;color:var(--muted)}
 .list{display:grid;gap:10px}.item{padding:14px;border:1px solid var(--line);border-radius:12px}.item h4{margin:0 0 5px}.item p{margin:0;color:var(--muted);font-size:14px}
@@ -24,7 +39,13 @@ table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;bor
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#eaf3ef;color:var(--p2);font-size:12px;font-weight:700}.notice{padding:12px;border-radius:11px;background:#fff7e6;color:#855c12;margin:10px 0}.status-bb{background:#fde8e8;color:#a33}.status-mb{background:#fff4d6;color:#8a6200}.status-bsh{background:#e8f3ff;color:#17618f}.status-bsb{background:#e8f7ee;color:#176b52}
 .photo{width:100%;height:170px;object-fit:cover;border-radius:12px;background:#eef3f0}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
 .bottom-nav{display:none}
-.parent-layout{max-width:980px;margin:0 auto}.parent-hero{background:linear-gradient(135deg,#f2faf6,#fff);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:16px}.parent-child-name{font-size:28px;font-weight:800;margin:0 0 6px}.parent-result{border-left:4px solid var(--p);padding:14px 16px;background:#fbfdfc;border-radius:12px;margin:10px 0}.parent-result h4{margin:0 0 8px}.parent-result p{margin:6px 0}.student-actions{display:flex;gap:8px;flex-wrap:wrap}.report-tools{display:flex;gap:10px;flex-wrap:wrap}.report-preview{white-space:pre-line;line-height:1.65;background:#fbfcfb}.upload-inline{margin-left:auto}
+.parent-layout{max-width:980px;margin:0 auto}.parent-hero{background:linear-gradient(135deg,#f2faf6,#fff);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:16px}.parent-child-name{font-size:28px;font-weight:800;margin:0 0 6px}.parent-result{border-left:4px solid var(--p);padding:14px 16px;background:#fbfdfc;border-radius:12px;margin:10px 0}.parent-result h4{margin:0 0 8px}.parent-result p{margin:6px 0}.student-actions{display:flex;gap:8px;flex-wrap:wrap}.report-tools{display:flex;gap:10px;flex-wrap:wrap}.report-preview{white-space:pre-line;line-height:1.65;background:#fbfcfb}.report-document{background:#fff}.report-document .section{break-inside:avoid}.report-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.report-evidence-card{break-inside:avoid}.report-evidence-card img{max-width:100%}@media(max-width:720px){.report-evidence-grid{grid-template-columns:1fr}}.upload-inline{margin-left:auto}
+.report-action-layer{position:relative;pointer-events:auto!important}
+.report-action-layer *{pointer-events:auto!important}
+.modal{z-index:100000!important}.modal-box{position:relative;z-index:100001}
+.report-action-button{position:relative;z-index:10001;pointer-events:auto!important;cursor:pointer!important;user-select:none}
+.report-action-button:disabled{opacity:1;cursor:pointer!important}
+
 @media print{body{background:#fff}.sidebar,.bottom-nav,.top,.no-print{display:none!important}main{padding:0;max-width:none}.section{border:0;margin:0;padding:0}.report-print{display:block!important}.modal{position:static;background:#fff}.modal-box{max-height:none;width:100%;box-shadow:none}}
 @media(max-width:800px){.shell{display:block}.sidebar{display:none}main{padding:18px 14px 86px}.cards{grid-template-columns:1fr 1fr}.grid2,.grid3{grid-template-columns:1fr}.top{align-items:flex-start}.bottom-nav{position:fixed;display:flex;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);z-index:4;justify-content:space-around;padding:7px}.bottom-nav button{background:transparent;color:var(--muted);font-size:11px;padding:7px}.bottom-nav button.active{color:var(--p)}.bottom-nav .admin-only{display:none!important}.section{padding:16px}.table-wrap{overflow:auto}.metric{font-size:24px}}
 
@@ -87,6 +108,32 @@ table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;bor
 @media(max-width:800px){
   #noteText.generated-note{font-size:13px;line-height:1.25;padding:13px 14px}
 }
+
+/* Tampilan khusus menu Perkembangan: berbeda dari kartu Kegiatan Harian */
+.development-page{display:grid;gap:18px}
+.development-hero{margin-top:0;display:flex;justify-content:space-between;gap:20px;align-items:center;background:linear-gradient(135deg,#f0f8f4,#ffffff)}
+.development-kicker{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--p);margin-bottom:6px}
+.development-hero h3{font-size:26px;margin:0 0 7px}
+.development-hero p{margin:0;color:var(--muted);line-height:1.5;max-width:920px}
+.development-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.development-stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px 16px;min-height:112px;display:flex;flex-direction:column;justify-content:center}
+.development-stat span{font-size:13px;font-weight:800;color:var(--muted)}
+.development-stat b{font-size:27px;line-height:1.1;margin:6px 0 4px}
+.development-stat small{font-size:11px;color:var(--muted)}
+.status-bb-box{border-left:4px solid #c66}.status-mb-box{border-left:4px solid #c99b2e}.status-bsh-box{border-left:4px solid #4b8bb8}.status-bsb-box{border-left:4px solid var(--p)}
+.development-focus{margin-top:0}
+.development-focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.development-focus-grid>div{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fbfdfc}
+.development-focus-grid span{display:block;color:var(--muted);font-size:12px}.development-focus-grid b{display:block;font-size:23px;margin-top:5px}
+.development-student-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.development-student-card{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+.development-student-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.development-student-head h4{margin:0 0 6px;font-size:18px}.development-class,.development-assessed{font-size:11px;font-weight:800;color:var(--p2);background:#eaf3ef;border-radius:999px;padding:5px 8px;display:inline-block}.development-assessed{background:#f3f5f4;color:var(--muted)}
+.development-latest{margin:14px 0;padding:12px;border-radius:12px;background:#f7faf8;display:flex;flex-direction:column;gap:4px}.development-latest span,.development-latest small{font-size:11px;color:var(--muted)}.development-latest b{font-size:13px}.development-latest.status-bb{background:#fde8e8}.development-latest.status-mb{background:#fff4d6}.development-latest.status-bsh{background:#e8f3ff}.development-latest.status-bsb{background:#e8f7ee}
+.development-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.development-mini-grid>div{border:1px solid var(--line);border-radius:11px;padding:10px;text-align:center}.development-mini-grid b{display:block;font-size:19px}.development-mini-grid span{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.development-note-preview{margin-top:12px;padding:11px 12px;border-radius:11px;background:#fbfcfb;border:1px dashed var(--line);font-size:12px}.development-note-preview b{font-size:11px;color:var(--p2)}.development-note-preview p{margin:5px 0 0;color:var(--muted);line-height:1.4}.development-note-preview.empty-note{color:var(--muted);font-style:italic}
+.development-card-actions{margin-top:13px;display:flex;flex-wrap:nowrap;gap:6px;align-items:center;width:100%;overflow:hidden}.development-card-actions button{padding:8px 8px;font-size:11px;line-height:1.1;white-space:nowrap;flex:1 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:1000px){.development-summary{grid-template-columns:repeat(3,1fr)}.development-student-grid{grid-template-columns:1fr}}
+@media(max-width:800px){.development-hero{display:block}.development-hero .primary{margin-top:14px}.development-summary{grid-template-columns:1fr 1fr}.development-focus-grid{grid-template-columns:1fr}.development-student-grid{grid-template-columns:1fr}.development-mini-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
@@ -115,110 +162,240 @@ table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;bor
 <div id="modal" class="modal hidden"><div class="modal-box"><div class="modal-head"><h3 id="modalTitle"></h3><button class="close" onclick="closeModal()">×</button></div><div id="modalBody"></div></div></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@3.0.3/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docx@9.5.1/build/index.umd.js"></script>
 <script>
 const KEY='alkahfiSmartSchoolV1';
 const SUPABASE_URL='https://zejcwhbpbtqnltqyhhry.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_gSdbyg0JcvUEnXSu_7ci9Q_ZLcJa89B';
 const SUPABASE_STATE_ID='alkahfi-smart-school-v1';
+const SUPABASE_TABLE='alkahfi_smart_school_state';
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 let syncReady=false;
 let syncTimer=null;
 let syncInFlight=false;
 let syncQueued=false;
+let syncRetryTimer=null;
+let syncStarting=false;
+let realtimeChannel=null;
+let realtimeReady=false;
+let memoryLocalDirty=false;
+let remoteSavePending=false;
+const SYNC_ARRAY_KEYS=['students','teachers','attendance','activities','notes','portfolios','announcements','childResults','reports','reportDrafts'];
+const SYNC_ID_KEYS={attendance:x=>`${x.studentId||''}::${x.date||''}`};
 const initial={students:[
 {id:'s1',name:'Ahmad Fikri',birth:'2022-03-12',gender:'Laki-laki',class:'KOBER A',parent:'Bunda Siti',phone:'081234567890'},
 {id:'s2',name:'Aisyah Zahra',birth:'2022-06-20',gender:'Perempuan',class:'KOBER A',parent:'Bunda Rina',phone:'081234567891'},
 {id:'s3',name:'Muhammad Rafi',birth:'2021-11-08',gender:'Laki-laki',class:'KOBER B',parent:'Ayah Hasan',phone:'081234567892'}],
 teachers:[{id:'t1',name:'Ibu Nurul',class:'KOBER A'},{id:'t2',name:'Ibu Aisyah',class:'KOBER B'}],
 attendance:[],activities:[],notes:[],portfolios:[],announcements:[
-{id:'a1',title:'Selamat Datang di Tahun Ajaran Baru',body:'Mari bersama menciptakan lingkungan belajar yang aman, hangat, dan menyenangkan bagi anak-anak.',target:'Semua',date:new Date().toISOString().slice(0,10)}
-]};
+{id:'a1',title:'Selamat Datang di Tahun Ajaran Baru',body:'Mari bersama menciptakan lingkungan belajar yang aman, hangat, dan menyenangkan bagi anak-anak.',target:'Semua',date:new Date().toISOString().slice(0,10)}]};
 let db=JSON.parse(localStorage.getItem(KEY)||'null')||initial;
-db.students.forEach(s=>{if(s.class==='KOBER A')s.class='A1';if(s.class==='KOBER B')s.class='B1';});
-if(!Array.isArray(db.childResults)) db.childResults=[];
-if(!Array.isArray(db.reports)) db.reports=[];
-let session=null;
-function save(){
- localStorage.setItem(KEY,JSON.stringify(db));
- if(syncReady) queueRemoteSave();
+function ensureSyncMeta(){
+ if(!db||typeof db!=='object')db={};
+ if(!db.__syncDeleted||typeof db.__syncDeleted!=='object')db.__syncDeleted={};
+ return db.__syncDeleted;
 }
-function queueRemoteSave(){
- syncQueued=true;
- clearTimeout(syncTimer);
- syncTimer=setTimeout(flushRemoteSave,250);
+function syncItemId(key,item){
+ if(!item)return '';
+ if(item.id)return String(item.id);
+ return SYNC_ID_KEYS[key]?String(SYNC_ID_KEYS[key](item)):'';
+}
+function markSyncDeleted(key,items){
+ const deleted=ensureSyncMeta();
+ const list=Array.isArray(items)?items:[items];
+ list.forEach(item=>{const id=syncItemId(key,item);if(id)deleted[`${key}::${id}`]=Date.now()});
+}
+function clearSyncDeletedForCurrentData(){
+ const deleted=ensureSyncMeta();
+ SYNC_ARRAY_KEYS.forEach(key=>{
+   (Array.isArray(db[key])?db[key]:[]).forEach(item=>{
+     const id=syncItemId(key,item);if(id)delete deleted[`${key}::${id}`];
+   });
+ });
+}
+function normalizeDbState(){
+ if(!Array.isArray(db.students))db.students=[];
+ if(!Array.isArray(db.teachers))db.teachers=[];
+ if(!Array.isArray(db.attendance))db.attendance=[];
+ if(!Array.isArray(db.activities))db.activities=[];
+ if(!Array.isArray(db.notes))db.notes=[];
+ if(!Array.isArray(db.portfolios))db.portfolios=[];
+ if(!Array.isArray(db.announcements))db.announcements=[];
+ if(!Array.isArray(db.childResults))db.childResults=[];
+ if(!Array.isArray(db.reports))db.reports=[];
+ if(!Array.isArray(db.reportDrafts))db.reportDrafts=[];
+ ensureSyncMeta();
+ db.attendance.forEach(x=>{if(x&&!x.id&&x.studentId&&x.date)x.id=`att_${x.studentId}_${x.date}`});
+ db.students.forEach(s=>{if(s.class==='KOBER A')s.class='A1';if(s.class==='KOBER B')s.class='B1'});
+ return db;
+}
+normalizeDbState();
+let session=null;
+const IDB_NAME='alkahfiSmartSchoolLocal';
+const IDB_STORE='state';
+function idbOpen(){return new Promise((resolve,reject)=>{if(!window.indexedDB)return reject(new Error('IndexedDB tidak tersedia'));const r=indexedDB.open(IDB_NAME,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(IDB_STORE))r.result.createObjectStore(IDB_STORE)};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error||new Error('IndexedDB gagal dibuka'));});}
+async function idbPutState(){try{const dbx=await idbOpen();await new Promise((resolve,reject)=>{const tx=dbx.transaction(IDB_STORE,'readwrite');tx.objectStore(IDB_STORE).put({data:db,savedAt:Date.now(),remoteStamp:localStorage.getItem(KEY+'_remoteUpdatedAt')||''},'current');tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)});dbx.close();}catch(e){console.warn('Cadangan IndexedDB gagal:',e)}}
+async function idbGetState(){const dbx=await idbOpen();const out=await new Promise((resolve,reject)=>{const tx=dbx.transaction(IDB_STORE,'readonly');const r=tx.objectStore(IDB_STORE).get('current');r.onsuccess=()=>resolve(r.result||null);r.onerror=()=>reject(r.error)});dbx.close();return out;}
+async function restoreIndexedDBBackup(){try{const backup=await idbGetState();if(!backup||!backup.data)return false;let localSavedAt=0;try{localSavedAt=Number(localStorage.getItem(KEY+'_localSavedAt')||0)}catch(e){}if(localSavedAt>=Number(backup.savedAt||0))return false;db=backup.data;normalizeDbState();memoryLocalDirty=backup.remoteStamp!=='';remoteSavePending=memoryLocalDirty;try{localStorage.setItem(KEY,JSON.stringify(db));localStorage.setItem(KEY+'_localSavedAt',String(backup.savedAt));localStorage.setItem(KEY+'_localDirty',memoryLocalDirty?'1':'');}catch(e){}return true}catch(e){console.warn('Pemulihan IndexedDB gagal:',e);return false}}
+function save(){
+ normalizeDbState();
+ clearSyncDeletedForCurrentData();
+ memoryLocalDirty=true;
+ remoteSavePending=true;
+ let localSaved=true;
+ try{
+   localStorage.setItem(KEY,JSON.stringify(db));
+   localStorage.setItem(KEY+'_localDirty','1');
+   localStorage.setItem(KEY+'_localSavedAt',String(Date.now()));
+ }catch(err){localSaved=false;console.warn('localStorage tidak dapat menyimpan seluruh data:',err);try{localStorage.removeItem(KEY+'_localDirty')}catch(e){}}
+ try{updateLoginIdentity()}catch(e){}
+ idbPutState();
+ if(syncReady)queueRemoteSave();
+ return localSaved;
+}
+function queueRemoteSave(){syncQueued=true;clearTimeout(syncTimer);syncTimer=setTimeout(flushRemoteSave,250)}
+function mergeArrayById(localArr,remoteArr,key){
+ const local=Array.isArray(localArr)?localArr:[];
+ const remote=Array.isArray(remoteArr)?remoteArr:[];
+ const map=new Map();
+ remote.forEach(x=>{const id=syncItemId(key,x);if(id)map.set(id,x);});
+ local.forEach(x=>{const id=syncItemId(key,x);if(id)map.set(id,x);});
+ return Array.from(map.values());
+}
+function mergeLocalAndRemoteState(localState,remoteState){
+ const local=localState||{};const remote=remoteState||{};
+ const merged={...remote,...local};
+ const deleted={...(remote.__syncDeleted||{}),...(local.__syncDeleted||{})};
+ merged.__syncDeleted=deleted;
+ SYNC_ARRAY_KEYS.forEach(key=>{
+   merged[key]=mergeArrayById(local[key],remote[key],key);
+   merged[key]=merged[key].filter(item=>{const id=syncItemId(key,item);return !id||!deleted[`${key}::${id}`]});
+ });
+ return normalizeDbStateObject(merged);
+}
+function normalizeDbStateObject(state){
+ const x=state||{};
+ SYNC_ARRAY_KEYS.forEach(k=>{if(!Array.isArray(x[k]))x[k]=[]});
+ if(!x.__syncDeleted||typeof x.__syncDeleted!=='object')x.__syncDeleted={};
+ x.attendance.forEach(a=>{if(a&&!a.id&&a.studentId&&a.date)a.id=`att_${a.studentId}_${a.date}`});
+ x.students.forEach(s=>{if(s.class==='KOBER A')s.class='A1';if(s.class==='KOBER B')s.class='B1'});
+ return x;
+}
+function isReportEditorOpen(){
+ const m=document.getElementById('modal');
+ const t=document.getElementById('modalTitle');
+ return !!(m && !m.classList.contains('hidden') && String(t?.textContent||'').startsWith('Edit Laporan —'));
+}
+function refreshAppAfterSync(){
+ if(session){
+   if(session.role==='teacher')window.studentClassFilter=session.className;
+   updateLoginIdentity();
+   renderNav();
+   // Jangan membangun ulang halaman saat editor laporan sedang terbuka.
+   // Render ulang akan membuat modal/editor terlihat menghilang ketika autosave/sinkronisasi berjalan.
+   if(!isReportEditorOpen()) render();
+ }
+}
+function applyRemoteSnapshot(remoteState,updatedAt){
+ const localDirty=memoryLocalDirty||localStorage.getItem(KEY+'_localDirty')==='1';
+ if(localDirty)return false;
+ db=normalizeDbStateObject(remoteState||{});
+ try{localStorage.setItem(KEY,JSON.stringify(db));if(updatedAt)localStorage.setItem(KEY+'_remoteUpdatedAt',updatedAt);localStorage.setItem(KEY+'_localSavedAt',String(Date.now()));localStorage.removeItem(KEY+'_localDirty')}catch(e){}
+ idbPutState();
+ refreshAppAfterSync();
+ return true;
+}
+async function fetchRemoteSnapshot(){
+ const {data,error}=await supabaseClient.from(SUPABASE_TABLE).select('data,updated_at').eq('app_id',SUPABASE_STATE_ID).maybeSingle();
+ if(error)throw error;
+ return data||null;
 }
 async function flushRemoteSave(){
  if(!syncReady||syncInFlight)return;
- syncInFlight=true; syncQueued=false;
+ syncInFlight=true;syncQueued=false;
  try{
+   // Selalu ambil snapshot server terakhir sebelum menulis. Ini mencegah satu perangkat
+   // menimpa perubahan perangkat lain hanya karena keduanya menyimpan hampir bersamaan.
+   const remote=await fetchRemoteSnapshot();
+   if(remote&&remote.data){
+     db=mergeLocalAndRemoteState(db,remote.data);
+     normalizeDbState();
+   }
    const payload={app_id:SUPABASE_STATE_ID,data:db,updated_at:new Date().toISOString()};
-   const {error}=await supabaseClient.from('alkahfi_smart_school_state').upsert(payload,{onConflict:'app_id'});
-   if(error) throw error;
-   localStorage.setItem(KEY+'_remoteUpdatedAt',payload.updated_at);
- }catch(err){console.error('Supabase sync gagal:',err);syncQueued=true;}
- finally{syncInFlight=false;if(syncQueued)queueRemoteSave();}
+   const {error}=await supabaseClient.from(SUPABASE_TABLE).upsert(payload,{onConflict:'app_id'});
+   if(error)throw error;
+   try{localStorage.setItem(KEY,JSON.stringify(db));localStorage.setItem(KEY+'_remoteUpdatedAt',payload.updated_at);localStorage.removeItem(KEY+'_localDirty')}catch(e){}
+   memoryLocalDirty=false;remoteSavePending=false;
+   try{localStorage.setItem(KEY+'_localSavedAt',String(Date.now()))}catch(e){}
+   idbPutState();
+   refreshAppAfterSync()
+ }catch(err){console.error('Supabase sync gagal:',err);syncQueued=true;remoteSavePending=true}
+ finally{syncInFlight=false;if(syncQueued)queueRemoteSave()}
 }
 async function pullRemoteState(){
  if(!syncReady||syncInFlight)return;
  try{
-   const {data,error}=await supabaseClient.from('alkahfi_smart_school_state').select('data,updated_at').eq('app_id',SUPABASE_STATE_ID).maybeSingle();
-   if(error||!data||!data.data)return;
-   const localStamp=localStorage.getItem(KEY+'_remoteUpdatedAt')||'';
-   if(data.updated_at && data.updated_at!==localStamp){
-     db=data.data;
-     if(!Array.isArray(db.students))db.students=[];
-     if(!Array.isArray(db.teachers))db.teachers=[];
-     if(!Array.isArray(db.attendance))db.attendance=[];
-     if(!Array.isArray(db.activities))db.activities=[];
-     if(!Array.isArray(db.notes))db.notes=[];
-     if(!Array.isArray(db.portfolios))db.portfolios=[];
-     if(!Array.isArray(db.announcements))db.announcements=[];
-     if(!Array.isArray(db.childResults))db.childResults=[];
-     if(!Array.isArray(db.reports))db.reports=[];
-     db.students.forEach(s=>{if(s.class==='KOBER A')s.class='A1';if(s.class==='KOBER B')s.class='B1';});
-     localStorage.setItem(KEY,JSON.stringify(db));
-     localStorage.setItem(KEY+'_remoteUpdatedAt',data.updated_at);
-     if(session){updateLoginIdentity();renderNav();render();}
-   }
+   const remote=await fetchRemoteSnapshot();
+   if(!remote||!remote.data)return;
+   if(memoryLocalDirty||localStorage.getItem(KEY+'_localDirty')==='1')return;
+   applyRemoteSnapshot(remote.data,remote.updated_at);
  }catch(err){console.error('Supabase pull gagal:',err)}
 }
-function startRemotePolling(){
- setInterval(pullRemoteState,5000);
+function startRemotePolling(){clearInterval(window.__alkahfiSyncPoll);window.__alkahfiSyncPoll=setInterval(pullRemoteState,5000)}
+function startRealtimeSync(){
+ try{
+   if(realtimeChannel)supabaseClient.removeChannel(realtimeChannel);
+   realtimeChannel=supabaseClient.channel('alkahfi-smart-school-state')
+     .on('postgres_changes',{event:'*',schema:'public',table:SUPABASE_TABLE,filter:`app_id=eq.${SUPABASE_STATE_ID}`},payload=>{
+       if(payload.eventType==='DELETE'){pullRemoteState();return}
+       const row=payload.new||{};
+       if(!row.data)return;
+       if(memoryLocalDirty||localStorage.getItem(KEY+'_localDirty')==='1'){queueRemoteSave();return}
+       applyRemoteSnapshot(row.data,row.updated_at);
+     })
+     .subscribe(status=>{
+       realtimeReady=status==='SUBSCRIBED';
+       if(!realtimeReady&&status==='CHANNEL_ERROR')console.warn('Supabase Realtime belum aktif; polling 5 detik tetap digunakan.');
+     });
+ }catch(e){realtimeReady=false;console.warn('Supabase Realtime gagal diaktifkan:',e)}
 }
 async function initRemoteSync(){
+ if(syncStarting)return;
+ syncStarting=true;
  try{
-   const {data,error}=await supabaseClient.from('alkahfi_smart_school_state').select('data,updated_at').eq('app_id',SUPABASE_STATE_ID).maybeSingle();
-   if(error) throw error;
+   const data=await fetchRemoteSnapshot();
+   const localDirty=memoryLocalDirty||localStorage.getItem(KEY+'_localDirty')==='1';
    if(data&&data.data){
-     db=data.data;
-     if(!Array.isArray(db.students))db.students=[];
-     if(!Array.isArray(db.teachers))db.teachers=[];
-     if(!Array.isArray(db.attendance))db.attendance=[];
-     if(!Array.isArray(db.activities))db.activities=[];
-     if(!Array.isArray(db.notes))db.notes=[];
-     if(!Array.isArray(db.portfolios))db.portfolios=[];
-     if(!Array.isArray(db.announcements))db.announcements=[];
-     if(!Array.isArray(db.childResults))db.childResults=[];
-     if(!Array.isArray(db.reports))db.reports=[];
-     db.students.forEach(s=>{if(s.class==='KOBER A')s.class='A1';if(s.class==='KOBER B')s.class='B1';});
-     localStorage.setItem(KEY,JSON.stringify(db));
-     if(data.updated_at)localStorage.setItem(KEY+'_remoteUpdatedAt',data.updated_at);
+     if(localDirty){
+       db=mergeLocalAndRemoteState(db,data.data);normalizeDbState();
+       const payload={app_id:SUPABASE_STATE_ID,data:db,updated_at:new Date().toISOString()};
+       const {error:upsertError}=await supabaseClient.from(SUPABASE_TABLE).upsert(payload,{onConflict:'app_id'});
+       if(upsertError)throw upsertError;
+       try{localStorage.setItem(KEY+'_remoteUpdatedAt',payload.updated_at);localStorage.removeItem(KEY+'_localDirty')}catch(e){}
+       memoryLocalDirty=false;remoteSavePending=false;
+     }else{
+       applyRemoteSnapshot(data.data,data.updated_at);
+     }
    }else{
      const payload={app_id:SUPABASE_STATE_ID,data:db,updated_at:new Date().toISOString()};
-     const {error:upsertError}=await supabaseClient.from('alkahfi_smart_school_state').upsert(payload,{onConflict:'app_id'});
+     const {error:upsertError}=await supabaseClient.from(SUPABASE_TABLE).upsert(payload,{onConflict:'app_id'});
      if(upsertError)throw upsertError;
-     localStorage.setItem(KEY+'_remoteUpdatedAt',payload.updated_at);
+     try{localStorage.setItem(KEY+'_remoteUpdatedAt',payload.updated_at);localStorage.removeItem(KEY+'_localDirty')}catch(e){}
+     memoryLocalDirty=false;remoteSavePending=false;
    }
    syncReady=true;
+   if(syncRetryTimer){clearTimeout(syncRetryTimer);syncRetryTimer=null}
    startRemotePolling();
+   startRealtimeSync();
+   if(memoryLocalDirty||remoteSavePending)queueRemoteSave();
    updateLoginIdentity();
-   if(session){renderNav();render();}
+   if(session){renderNav();render()}
  }catch(err){
-   console.error('Supabase initialization failed:',err);
-   syncReady=false;
-   updateLoginIdentity();
-   alert('Sinkronisasi online belum tersambung. Aplikasi tetap menggunakan data lokal sementara. Periksa pengaturan akses Supabase.');
- }
+   console.error('Supabase initialization failed:',err);syncReady=false;updateLoginIdentity();
+   if(!syncRetryTimer)syncRetryTimer=setTimeout(()=>{syncRetryTimer=null;initRemoteSync()},5000)
+ }finally{syncStarting=false}
 }
 // Sinkronisasi Kegiatan ↔ Perkembangan:
 // catatan perkembangan otomatis hanya boleh ada selama masih ada kegiatan pada kelas anak.
@@ -260,42 +437,79 @@ const menus={
 };
 let page='dashboard';
 let pageHistory=[];
+function normalizeLoginName(v){
+ return String(v||'').trim().replace(/\s+/g,' ').toLowerCase();
+}
 function updateLoginIdentity(){
- const role=roleSelect.value;
+ const role=document.getElementById('roleSelect')?.value||'admin';
+ const old=document.getElementById('loginName');
+ const oldValue=old?.value||'';
  if(role==='admin'){
-   loginIdentity.innerHTML='<label>Nama Administrator</label><input id="loginName" value="Administrator AL-KAHFI" placeholder="Masukkan nama administrator">';
+   loginIdentity.innerHTML='<label>Password</label><input id="loginName" type="password" autocomplete="current-password" placeholder="Masukkan password">';
  }else if(role==='teacher'){
    const classes=CLASS_OPTIONS;
-   loginIdentity.innerHTML='<label>Pilih Kelas</label><select id="loginName">'+classes.map(c=>`<option value="${c}">Kelas ${c}</option>`).join('')+'</select><div class="muted" style="margin-top:7px">Akses guru disesuaikan dengan kelas yang dipilih.</div>';
+   const selected=classes.includes(oldValue)?oldValue:(window.loginSelectedClass&&classes.includes(window.loginSelectedClass)?window.loginSelectedClass:classes[0]);
+   loginIdentity.innerHTML='<label>Pilih Kelas</label><select id="loginName" onchange="window.loginSelectedClass=this.value">'+classes.map(c=>`<option value="${c}" ${c===selected?'selected':''}>Kelas ${c}</option>`).join('')+'</select>';
+   window.loginSelectedClass=selected;
  }else{
-   loginIdentity.innerHTML='<label>Pilih Nama Anak</label><select id="loginName">'+db.students.map(s=>`<option value="${s.id}">${s.name} — Kelas ${s.class}</option>`).join('')+'</select>';
+   const students=Array.isArray(db.students)?db.students.filter(s=>String(s.name||'').trim()):[];
+   const classes=CLASS_OPTIONS;
+   const oldClass=document.getElementById('loginParentClass')?.value||window.loginSelectedParentClass||'';
+   const availableClass=classes.includes(oldClass)?oldClass:(students.length?students[0].class:classes[0]);
+   const childOptions=students.filter(s=>s.class===availableClass);
+   const oldStudent=document.getElementById('loginName')?.value||window.loginSelectedStudentName||'';
+   const selectedStudent=childOptions.some(s=>normalizeLoginName(s.name)===normalizeLoginName(oldStudent))?oldStudent:(childOptions[0]?.name||'');
+   loginIdentity.innerHTML='<label>Pilih Kelas</label><select id="loginParentClass" onchange="window.loginSelectedParentClass=this.value;updateParentStudentOptions()">'+classes.map(c=>`<option value="${c}" ${c===availableClass?'selected':''}>Kelas ${c}</option>`).join('')+'</select><label style="margin-top:14px;display:block">Nama Lengkap Anak</label><select id="loginName" onchange="window.loginSelectedStudentName=this.value">'+(childOptions.length?childOptions.map(s=>`<option value="${String(s.name).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}" ${normalizeLoginName(s.name)===normalizeLoginName(selectedStudent)?'selected':''}>${String(s.name).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</option>`).join(''):'<option value="">Belum ada anak pada kelas ini</option>')+'</select>';
+   window.loginSelectedParentClass=availableClass;
+   window.loginSelectedStudentName=selectedStudent;
  }
 }
+function updateParentStudentOptions(){
+ const classEl=document.getElementById('loginParentClass');
+ const childEl=document.getElementById('loginName');
+ if(!classEl||!childEl)return;
+ const className=classEl.value;
+ window.loginSelectedParentClass=className;
+ const students=(Array.isArray(db.students)?db.students:[]).filter(s=>s.class===className && String(s.name||'').trim());
+ const old=window.loginSelectedStudentName||childEl.value||'';
+ childEl.innerHTML=students.length?students.map(s=>`<option value="${String(s.name).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}" ${normalizeLoginName(s.name)===normalizeLoginName(old)?'selected':''}>${String(s.name).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</option>`).join(''):'<option value="">Belum ada anak pada kelas ini</option>';
+ window.loginSelectedStudentName=childEl.value||'';
+}
 function login(){
- if(!syncReady){alert('Sinkronisasi data sedang disiapkan. Tunggu beberapa detik lalu coba lagi.');return}
- const role=roleSelect.value;
- const value=loginName?loginName.value:'';
+ const role=document.getElementById('roleSelect')?.value||'admin';
+ const value=document.getElementById('loginName')?.value||'';
  if(role==='teacher'){
-   const className=value;
-   if(!className){alert('Silakan pilih kelas.');return}
+   const className=value||window.loginSelectedClass||'';
+   if(!CLASS_OPTIONS.includes(className)){alert('Silakan pilih kelas.');return}
    session={role,name:`Guru Kelas ${className}`,className};
+   window.studentClassFilter=className;
  }else if(role==='parent'){
-   const student=db.students.find(s=>s.id===value);
-   if(!student){alert('Silakan pilih nama anak.');return}
+   const className=document.getElementById('loginParentClass')?.value||window.loginSelectedParentClass||'';
+   const typedName=normalizeLoginName(value||window.loginSelectedStudentName||'');
+   const student=db.students.find(s=>s.class===className&&normalizeLoginName(s.name)===typedName);
+   if(!student){alert('Nama anak belum terdaftar pada kelas yang dipilih. Silakan pilih kelas dan nama anak yang tersedia pada daftar.');return}
    session={role,name:student.name,studentId:student.id,className:student.class};
  }else{
-   session={role,name:value||'Administrator AL-KAHFI'};
+   const password=value.trim();
+   if(!password){alert('Silakan masukkan password.');return}
+   if(password!=='24434'){alert('Password Administrator salah.');return}
+   session={role,name:'Administrator / Kepala KOBER'};
  }
  loginView.classList.add('hidden');appView.classList.remove('hidden');renderNav();render()
 }
 function logout(){session=null;page='dashboard';pageHistory=[];appView.classList.add('hidden');loginView.classList.remove('hidden');updateLoginIdentity()}
-function renderNav(){let m=menus[session.role];sideNav.innerHTML=m.map(x=>`<button class="${page===x[0]?'active':''}" onclick="go('${x[0]}')">${x[1]} ${x[2]}</button>`).join('');bottomNav.innerHTML=m.map((x,i)=>`<button class="${page===x[0]?'active':''}" onclick="go('${x[0]}')">${x[1]}<br>${x[2]}</button>`).join('')}
+function renderNav(){let m=menus[session.role];sideNav.innerHTML=m.map(x=>`<button type="button" class="${page===x[0]?'active':''}" onclick="go('${x[0]}');return false;">${x[1]} ${x[2]}</button>`).join('');bottomNav.innerHTML=m.map((x,i)=>`<button type="button" class="${page===x[0]?'active':''}" onclick="go('${x[0]}');return false;">${x[1]}<br>${x[2]}</button>`).join('')}
 function go(p){
- if(p===page)return;
- pageHistory.push(page);
+ // Navigasi selalu diproses agar tombol menu tetap responsif, termasuk saat pengguna
+ // menekan menu yang sedang terbuka. Jangan mengubah halaman lain yang sudah baik.
+ if(p!==page) pageHistory.push(page);
  page=p;
- renderNav();render();
+ if(page==='students' && session?.role==='teacher') window.studentClassFilter=session.className;
+ renderNav();
+ render();
+ if(page==='students') setTimeout(()=>students(),0);
 }
+window.go=go;
 function goBack(){
  if(!pageHistory.length){go('dashboard');return}
  page=pageHistory.pop();
@@ -316,6 +530,10 @@ function render(){
  if(page==='info')info()
 }
 function countPresent(){return db.attendance.filter(x=>x.date===today()&&x.status==='Hadir').length}
+function escapeHtml(value){
+ const str=String(value??'');
+ return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/'/g,'&#39;');
+}
 function dashboard(){let c=document.getElementById('content');if(session.role==='parent'){let s=db.students.find(x=>x.id===session.studentId)||db.students[0];c.innerHTML=`<div class="cards"><div class="card"><div class="muted">Anak</div><div class="metric" style="font-size:20px">${s.name}</div><div class="muted">${s.class}</div></div><div class="card"><div class="muted">Kehadiran Hari Ini</div><div class="metric">${db.attendance.find(x=>x.studentId===s.id&&x.date===today())?.status||'Belum dicatat'}</div></div></div><div class="section"><div class="section-head"><h3>Informasi Terbaru</h3></div>${announcementList(true)}</div>`;return}
 const teacherStudents=session.role==='teacher'?db.students.filter(s=>s.class===session.className):db.students;
  const teacherActivities=session.role==='teacher'?db.activities.filter(a=>a.className===session.className):db.activities;
@@ -325,25 +543,66 @@ c.innerHTML=`<div class="cards">${cards.map(x=>`<div class="card"><div class="mu
 <div class="section"><div class="section-head"><h3>Tindakan Cepat</h3></div><div class="actions"><button class="primary" onclick="openAttendance()">✓ Absensi Hari Ini</button><button class="secondary" onclick="openActivity()">🎨 Catat Kegiatan</button><button class="secondary" onclick="go('development')">🌱 Catat Perkembangan</button></div></div>
 <div class="section"><div class="section-head"><h3>Informasi Terbaru</h3></div>${announcementList()}</div>`}
 function students(){
+ const contentEl=document.getElementById('content');
+ if(!contentEl||!session)return;
  if(session.role==='parent'){
    const st=db.students.find(s=>s.id===session.studentId);
-   if(!st){content.innerHTML='<div class="empty">Data anak belum tersedia.</div>';return}
+   if(!st){contentEl.innerHTML='<div class="empty">Data anak belum tersedia.</div>';return}
    const results=sortResultsByActivityOrder((db.childResults||[]).filter(r=>r.studentId===st.id));
    const notes=parentSyncedNotes(st.id);
    const ports=db.portfolios.filter(p=>p.studentId===st.id);
-   content.innerHTML=`<div class="parent-layout"><div class="parent-hero"><div class="parent-child-name">${st.name}</div><div class="muted">Kelas ${st.class} • ${st.parent}</div><div class="actions"><button class="primary" onclick="studentDetail('${st.id}')">Lihat Perkembangan Anak</button></div></div><div class="cards"><div class="card"><div class="muted">Hasil Kegiatan</div><div class="metric">${results.length}</div></div><div class="card"><div class="muted">Catatan Perkembangan</div><div class="metric">${notes.length}</div></div><div class="card"><div class="muted">Bukti Fisik</div><div class="metric">${ports.length}</div></div></div><div class="section"><h4>Hasil Kegiatan Terbaru</h4>${results.length?results.slice(0,5).map(r=>`<div class="parent-result"><b>${r.activityTitle}</b><p><span class="badge ${statusClass(r.status)}">${r.status} — ${statusLabel(r.status)}</span></p><p>${r.shortNote||statusSummary(r.status,st.name,r.activityTitle)}</p><small>${r.date}</small></div>`).join(''):'<div class="empty">Belum ada hasil kegiatan yang tercatat.</div>'}</div></div>`;
+   contentEl.innerHTML=`<div class="parent-layout"><div class="parent-hero"><div class="parent-child-name">${st.name}</div><div class="muted">Kelas ${st.class} • ${st.parent}</div><div class="actions"><button class="primary" type="button" onclick="studentDetail('${st.id}')">Lihat Perkembangan Anak</button></div></div><div class="cards"><div class="card"><div class="muted">Hasil Kegiatan</div><div class="metric">${results.length}</div></div><div class="card"><div class="muted">Catatan Perkembangan</div><div class="metric">${notes.length}</div></div><div class="card"><div class="muted">Bukti Fisik</div><div class="metric">${ports.length}</div></div></div><div class="section"><h4>Hasil Kegiatan Terbaru</h4>${results.length?results.slice(0,5).map(r=>`<div class="parent-result"><b>${r.activityTitle}</b><p><span class="badge ${statusClass(r.status)}">${r.status} — ${statusLabel(r.status)}</span></p><p>${r.shortNote||statusSummary(r.status,st.name,r.activityTitle)}</p><small>${r.date}</small></div>`).join(''):'<div class="empty">Belum ada hasil kegiatan yang tercatat.</div>'}</div></div>`;
    return;
  }
- const currentClass=window.studentClassFilter||'Semua';
- const baseList=session.role==='parent'?[db.students.find(x=>x.id===session.studentId)].filter(Boolean):session.role==='teacher'?db.students.filter(s=>s.class===session.className):db.students;
- const list=baseList.filter(s=>currentClass==='Semua'||s.class===currentClass);
- content.innerHTML=`<div class="section"><div class="section-head"><h3>Data Anak</h3>${session.role==='admin'?'<button class="primary" onclick="openStudent()">+ Tambah Anak</button>':''}</div>
- ${session.role!=='parent'?`<div style="max-width:320px;margin-bottom:16px"><label>Cari berdasarkan kelas</label><select onchange="window.studentClassFilter=this.value;students()"><option value="Semua" ${currentClass==='Semua'?'selected':''}>Semua Kelas</option>${getClassOptions().map(c=>`<option value="${c}" ${currentClass===c?'selected':''}>Kelas ${c}</option>`).join('')}</select></div>`:''}
- <div class="table-wrap"><table><thead><tr><th>Nama</th><th>Kelas</th><th>Orang Tua</th><th>Aksi</th></tr></thead><tbody>${list.length?list.map(s=>`<tr><td>${s.name}</td><td>Kelas ${s.class}</td><td>${s.parent}</td><td><div class="actions" style="margin-top:0"><button class="secondary" onclick="studentDetail('${s.id}')">Lihat</button>${session.role!=='parent'?`<button class="danger" onclick="deleteStudent('${s.id}')">🗑 Hapus</button>`:''}</div></td></tr>`).join(''):'<tr><td colspan="4" class="empty">Belum ada anak pada kelas ini.</td></tr>'}</tbody></table></div></div>`
-}function deleteStudent(id){
+ const isTeacher=session.role==='teacher';
+ const currentClass=isTeacher?session.className:(window.studentClassFilter||'Semua');
+ const list=isTeacher?db.students.filter(s=>s.class===session.className):db.students.filter(s=>currentClass==='Semua'||s.class===currentClass);
+ const classFilter=session.role==='admin'?`<div style="max-width:320px;margin-bottom:16px"><label>Cari berdasarkan kelas</label><select onchange="window.studentClassFilter=this.value;students()"><option value="Semua" ${currentClass==='Semua'?'selected':''}>Semua Kelas</option>${getClassOptions().map(c=>`<option value="${c}" ${currentClass===c?'selected':''}>Kelas ${c}</option>`).join('')}</select></div>`:'';
+ const teacherTitle=isTeacher?`<div class="badge" style="font-size:14px;padding:7px 12px;margin-top:4px">Kelas ${escapeHtml(session.className)}</div>`:'';
+ contentEl.innerHTML=`<div class="section"><div class="section-head"><div><h3>Data Anak</h3>${teacherTitle}</div>${isTeacher?'<button type="button" class="primary" onclick="openStudent()">+ Tambah Anak</button>':''}</div>${classFilter}<div class="table-wrap"><table class="student-data-table"><thead><tr><th>No.</th><th>Nama</th><th>Tanggal Lahir</th><th>Jenis Kelamin</th><th>Orang Tua/Wali</th><th>No. Kontak</th><th>Aksi</th></tr></thead><tbody>${list.length?list.map((s,i)=>`<tr><td>${i+1}</td><td>${escapeHtml(s.name||'-')}</td><td>${s.birth?new Date(s.birth+'T00:00:00').toLocaleDateString('id-ID',{day:'2-digit',month:'2-digit',year:'numeric'}):'-'}</td><td>${escapeHtml(s.gender||'-')}</td><td>${escapeHtml(s.parent||'-')}</td><td>${escapeHtml(s.phone||'-')}</td><td><div class="actions" style="margin-top:0"><button type="button" class="secondary" onclick="studentDetail('${s.id}')">Lihat</button>${isTeacher?`<button type="button" class="secondary" onclick="editStudent('${s.id}')">✎ Edit</button><button type="button" class="danger" onclick="deleteStudent('${s.id}')">🗑 Hapus</button>`:''}</div></td></tr>`).join(''):'<tr><td colspan="7" class="empty">Belum ada anak pada kelas ${escapeHtml(currentClass)}.</td></tr>'}</tbody></table></div></div>`;
+}
+window.students=students;
+function editStudent(id){
+ if(!session || session.role!=='teacher'){ alert('Pengeditan data anak hanya dapat dilakukan oleh akun Guru sesuai kelasnya.'); return; }
+ const s=db.students.find(x=>x.id===id);
+ if(!s){ alert('Data anak tidak ditemukan.'); return; }
+ if(s.class!==session.className){ alert('Anda hanya dapat mengedit data anak pada kelas Anda sendiri.'); return; }
+ modalTitle.textContent='Edit Data Anak';
+ modalBody.innerHTML=`<div class="notice"><b>Perbarui data anak.</b><br>Perubahan akan otomatis digunakan oleh menu Kegiatan, Perkembangan, Portofolio, Absensi, Laporan, dan Login Orang Tua.</div><div class="grid2"><div><label>Nama Lengkap Anak</label><input id="fEditName" autocomplete="name" value="${escapeHtml(s.name||'')}" placeholder="Masukkan nama lengkap anak"></div><div><label>Kelas</label><input value="Kelas ${escapeHtml(s.class)}" disabled></div><div><label>Tanggal Lahir</label><input id="fEditBirth" type="date" value="${escapeHtml(s.birth||'')}"></div><div><label>Jenis Kelamin</label><select id="fEditGender"><option ${s.gender==='Laki-laki'?'selected':''}>Laki-laki</option><option ${s.gender==='Perempuan'?'selected':''}>Perempuan</option></select></div><div><label>Orang Tua/Wali</label><input id="fEditParent" value="${escapeHtml(s.parent||'')}" placeholder="Nama orang tua/wali"></div><div><label>No. Kontak</label><input id="fEditPhone" value="${escapeHtml(s.phone||'')}" placeholder="Nomor WhatsApp/telepon"></div></div><div class="actions"><button type="button" class="primary" onclick="saveEditedStudent('${s.id}'); return false;">Simpan Perubahan</button></div>`;
+ modal.classList.remove('hidden');
+ setTimeout(()=>document.getElementById('fEditName')?.focus(),50);
+}
+function saveEditedStudent(id){
+ if(!session || session.role!=='teacher'){ alert('Pengeditan data anak hanya dapat dilakukan oleh akun Guru.'); return false; }
+ const s=db.students.find(x=>x.id===id);
+ if(!s || s.class!==session.className){ alert('Data anak tidak ditemukan atau bukan bagian dari kelas Anda.'); return false; }
+ const name=(document.getElementById('fEditName')?.value||'').trim().replace(/\s+/g,' ');
+ const duplicate=db.students.some(x=>x.id!==id && x.class===s.class && normalizeLoginName(x.name)===normalizeLoginName(name));
+ if(!name){ alert('Nama lengkap anak wajib diisi.'); return false; }
+ if(duplicate){ alert(`Nama anak "${name}" sudah terdaftar pada Kelas ${s.class}.`); return false; }
+ s.name=name;
+ s.birth=document.getElementById('fEditBirth')?.value||'';
+ s.gender=document.getElementById('fEditGender')?.value||'';
+ s.parent=(document.getElementById('fEditParent')?.value||'').trim();
+ s.phone=(document.getElementById('fEditPhone')?.value||'').trim();
+ const localSaved=save();
+ updateLoginIdentity();
+ closeModal();
+ renderNav();
+ render();
+ alert(localSaved ? `Data anak "${name}" berhasil diperbarui.` : `Data anak "${name}" sudah diperbarui pada aplikasi. Sinkronisasi akan dilanjutkan otomatis.`);
+ return false;
+}
+function deleteStudent(id){
+ if(!session || session.role!=='teacher'){ alert('Penghapusan data anak hanya dapat dilakukan oleh akun Guru.'); return; }
  const s=db.students.find(x=>x.id===id);
  if(!s) return;
  if(confirm(`Hapus data anak "${s.name}" beserta catatan perkembangan dan portofolionya?`)){
+   markSyncDeleted('students',s);
+   markSyncDeleted('notes',db.notes.filter(x=>x.studentId===id));
+   markSyncDeleted('portfolios',db.portfolios.filter(x=>x.studentId===id));
+   markSyncDeleted('attendance',db.attendance.filter(x=>x.studentId===id));
+   markSyncDeleted('childResults',(db.childResults||[]).filter(x=>x.studentId===id));
    db.students=db.students.filter(x=>x.id!==id);
    db.notes=db.notes.filter(x=>x.studentId!==id);
    db.portfolios=db.portfolios.filter(x=>x.studentId!==id);
@@ -403,6 +662,9 @@ function deleteChildResult(resultId, studentId){
  const r=(db.childResults||[]).find(x=>x.id===resultId);
  if(!r) return;
  if(confirm(`Hapus hasil kegiatan "${r.activityTitle}" untuk anak ini? Catatan perkembangan otomatis dan portofolio otomatis yang berasal dari hasil ini juga akan terhapus.`)){
+   markSyncDeleted('childResults',r);
+   const linkedNotes=db.notes.filter(n=>n.activityId===r.activityId && n.studentId===studentId && n.source==='individual-result');
+   markSyncDeleted('notes',linkedNotes);
    db.childResults=(db.childResults||[]).filter(x=>x.id!==resultId);
    db.notes=db.notes.filter(n=>!(n.activityId===r.activityId && n.studentId===studentId && n.source==='individual-result'));
    save();
@@ -459,23 +721,68 @@ function studentDetail(id){
  ${session.role!=='parent'?`<div class="section"><div class="section-head"><div><h4>Bukti Fisik Anak</h4><div class="muted">Unggah bukti fisik melalui menu Catatan Perkembangan. Bukti yang diunggah akan otomatis tampil di Portofolio.</div></div></div>`:''}`;
  modal.classList.remove('hidden')
 }function openStudent(){
- modalTitle.textContent='Tambah Anak';
- modalBody.innerHTML=`<div class="grid2"><div><label>Nama Anak</label><input id="fName"></div><div><label>Kelas</label><select id="fClass">${CLASS_OPTIONS.map(c=>`<option value="${c}">Kelas ${c}</option>`).join('')}</select></div><div><label>Tanggal Lahir</label><input id="fBirth" type="date"></div><div><label>Jenis Kelamin</label><select id="fGender"><option>Laki-laki</option><option>Perempuan</option></select></div><div><label>Orang Tua/Wali</label><input id="fParent"></div><div><label>No. Kontak</label><input id="fPhone"></div></div><div class="actions"><button class="primary" onclick="addStudent()">Simpan Anak</button></div>`;
- modal.classList.remove('hidden')
+ if(!session || session.role!=='teacher') { alert('Pengisian data anak dilakukan oleh akun Guru sesuai kelasnya. Administrator hanya melihat data anak.'); return; }
+ modalTitle.textContent='Tambah Data Anak';
+ const teacherFixedClass=session.role==='teacher' ? session.className : '';
+ const classField=teacherFixedClass
+   ? `<div><label>Kelas</label><input value="Kelas ${teacherFixedClass}" disabled><input type="hidden" id="fClass" value="${teacherFixedClass}"></div>`
+   : `<div><label>Kelas</label><select id="fClass">${CLASS_OPTIONS.map(c=>`<option value="${c}">Kelas ${c}</option>`).join('')}</select></div>`;
+ modalBody.innerHTML=`<div class="notice"><b>Data anak menjadi data utama aplikasi.</b><br>Nama yang disimpan di sini otomatis dapat dipilih oleh Orang Tua saat login dan digunakan pada kegiatan, perkembangan, portofolio, absensi, serta laporan.</div><div class="grid2"><div><label>Nama Lengkap Anak</label><input id="fName" autocomplete="name" placeholder="Masukkan nama lengkap anak"></div>${classField}<div><label>Tanggal Lahir</label><input id="fBirth" type="date"></div><div><label>Jenis Kelamin</label><select id="fGender"><option>Laki-laki</option><option>Perempuan</option></select></div><div><label>Orang Tua/Wali</label><input id="fParent" placeholder="Nama orang tua/wali"></div><div><label>No. Kontak</label><input id="fPhone" placeholder="Nomor WhatsApp/telepon"></div></div><div class="actions"><button type="button" class="primary" onclick="addStudent(); return false;">Simpan Data Anak</button></div>`;
+ modal.classList.remove('hidden');
+ setTimeout(()=>document.getElementById('fName')?.focus(),50);
 }
 function addStudent(){
- const className=fClass.value.trim();
- if(!fName.value.trim()||!className){alert('Nama anak dan kelas wajib diisi.');return}
- db.students.push({id:'s'+Date.now(),name:fName.value.trim(),class:className,birth:fBirth.value,gender:fGender.value,parent:fParent.value,phone:fPhone.value});
- save();closeModal();students()
+ if(!session || session.role!=='teacher'){ alert('Hanya akun Guru yang dapat menambahkan data anak.'); return false; }
+ const nameEl=document.getElementById('fName');
+ const classEl=document.getElementById('fClass');
+ const birthEl=document.getElementById('fBirth');
+ const genderEl=document.getElementById('fGender');
+ const parentEl=document.getElementById('fParent');
+ const phoneEl=document.getElementById('fPhone');
+ const name=(nameEl?.value||'').trim().replace(/\s+/g,' ');
+ // Kelas selalu mengikuti username/sesi Guru. Fallback ke field hanya untuk menjaga kompatibilitas.
+ const className=(session.className||classEl?.value||'').trim();
+ if(!CLASS_OPTIONS.includes(className)){
+   alert('Kelas Guru tidak dikenali. Silakan keluar lalu login kembali dengan kelas A1, A2, A3, B1, B2, atau B3.');
+   return false;
+ }
+ if(!name){alert('Nama lengkap anak wajib diisi.');nameEl?.focus();return false}
+ const duplicate=db.students.some(s=>s.class===className && normalizeLoginName(s.name)===normalizeLoginName(name));
+ if(duplicate){alert(`Data anak "${name}" sudah terdaftar pada Kelas ${className}.`);return false}
+ const newStudent={
+   id:'s'+Date.now()+Math.random().toString(36).slice(2,7),
+   name,
+   class:className,
+   birth:birthEl?.value||'',
+   gender:genderEl?.value||'',
+   parent:(parentEl?.value||'').trim(),
+   phone:(phoneEl?.value||'').trim()
+ };
+ db.students.push(newStudent);
+ // Jangan rollback data anak hanya karena penyimpanan browser/server sedang bermasalah.
+ // Data langsung masuk ke db aktif dan akan dikirim ulang otomatis ke Supabase.
+ const localSaved=save();
+ window.studentClassFilter=className;
+ updateLoginIdentity();
+ closeModal();
+ renderNav();
+ render();
+ alert(localSaved
+   ? `Data anak "${name}" berhasil disimpan pada Kelas ${className}.`
+   : `Data anak "${name}" sudah masuk ke aplikasi pada Kelas ${className}. Penyimpanan browser sedang penuh; data akan disinkronkan otomatis ke server.`);
+ return false;
 }
 function openAttendance(){const attendanceStudents=accessibleStudents();modalTitle.textContent='Absensi Hari Ini';let existing=Object.fromEntries(db.attendance.filter(x=>x.date===today()).map(x=>[x.studentId,x.status]));modalBody.innerHTML=`<div class="notice">Semua anak otomatis dipilih Hadir. Ubah hanya yang tidak hadir.</div>${attendanceStudents.map(s=>`<div class="grid2" style="align-items:center;margin:8px 0"><b>${s.name}</b><select id="att_${s.id}"><option ${existing[s.id]==='Hadir'?'selected':''}>Hadir</option><option ${existing[s.id]==='Sakit'?'selected':''}>Sakit</option><option ${existing[s.id]==='Izin'?'selected':''}>Izin</option><option ${existing[s.id]==='Tanpa Keterangan'?'selected':''}>Tanpa Keterangan</option></select></div>`).join('')}<div class="actions"><button class="primary" onclick="saveAttendance()">Simpan Absensi</button></div>`;modal.classList.remove('hidden')}
-function saveAttendance(){const attendanceStudents=accessibleStudents();const ids=new Set(attendanceStudents.map(s=>s.id));db.attendance=db.attendance.filter(x=>!(x.date===today()&&ids.has(x.studentId)));attendanceStudents.forEach(s=>db.attendance.push({studentId:s.id,date:today(),status:document.getElementById('att_'+s.id).value}));save();closeModal();render()}
+function saveAttendance(){const attendanceStudents=accessibleStudents();const ids=new Set(attendanceStudents.map(s=>s.id));const removed=db.attendance.filter(x=>x.date===today()&&ids.has(x.studentId));markSyncDeleted('attendance',removed);db.attendance=db.attendance.filter(x=>!(x.date===today()&&ids.has(x.studentId)));attendanceStudents.forEach(s=>db.attendance.push({id:`att_${s.id}_${today()}`,studentId:s.id,date:today(),status:document.getElementById('att_'+s.id).value}));save();closeModal();render()}
 
 function deleteActivity(id){
  const a=db.activities.find(x=>x.id===id);
  if(!a) return;
  if(confirm(`Hapus kegiatan "${a.title}" beserta seluruh hasil keberhasilan anak yang sudah dicatat?`)){
+   markSyncDeleted('activities',a);
+   markSyncDeleted('notes',db.notes.filter(n=>n.activityId===id));
+   markSyncDeleted('portfolios',db.portfolios.filter(p=>p.activityId===id));
+   markSyncDeleted('childResults',(db.childResults||[]).filter(r=>r.activityId===id));
    db.activities=db.activities.filter(x=>x.id!==id);
    db.notes=db.notes.filter(n=>n.activityId!==id);
    db.portfolios=db.portfolios.filter(p=>p.activityId!==id);
@@ -493,7 +800,17 @@ function activityResultCount(activityId){
 }
 
 function activities(){
- const visibleActivities=(session.role==='parent'&&session.studentId)?db.activities.filter(a=>a.className===db.students.find(s=>s.id===session.studentId)?.class):db.activities;
+ // Guru hanya melihat kegiatan milik kelas yang dipilih saat login.
+ // Administrator dapat memantau semua kelas, sedangkan Orang Tua hanya melihat kegiatan anaknya.
+ let visibleActivities;
+ if(session.role==='teacher'){
+   visibleActivities=db.activities.filter(a=>a.className===session.className);
+ }else if(session.role==='parent'&&session.studentId){
+   const parentStudent=db.students.find(s=>s.id===session.studentId);
+   visibleActivities=db.activities.filter(a=>a.className===parentStudent?.class);
+ }else{
+   visibleActivities=db.activities;
+ }
  const sorted=visibleActivities.slice().sort((a,b)=>{
    const dateCompare=(b.date||'').localeCompare(a.date||'');
    if(dateCompare!==0) return dateCompare;
@@ -501,7 +818,7 @@ function activities(){
  });
  content.innerHTML=`<div class="section">
    <div class="section-head"><h3>Kegiatan Harian</h3>${session.role!=='parent'?'<button class="primary" onclick="openActivity()">+ Catat Kegiatan</button>':''}</div>
-   <div class="notice">Kegiatan dicatat untuk kelas. Setelah itu, gunakan tombol <b>Catat Hasil Anak</b> untuk mencatat keberhasilan setiap anak secara berbeda.</div>
+   <div class="notice">Catat kegiatan kelas terlebih dahulu. Setelah kegiatan berhasil disimpan, tombol <b>Catat Hasil Anak</b> tersedia pada kegiatan tersebut untuk mencatat keberhasilan setiap anak.</div>
    <div class="list">${sorted.length?sorted.map(a=>{
      const childCount=db.students.filter(s=>s.class===a.className).length;
      const resultCount=activityResultCount(a.id);
@@ -514,9 +831,9 @@ function activities(){
         <span class="badge">${resultCount}/${childCount} anak sudah dinilai</span>
         <small> ${a.date}</small>
        </div>
-       ${session.role!=='parent'?`<div class="actions" style="margin-top:0">
-         <button class="secondary" onclick="openChildResults('${a.id}')">👥 Catat Hasil Anak</button>
-         <button class="danger" onclick="deleteActivity('${a.id}')">🗑 Hapus</button>
+       ${session.role!=='parent' && a.id ? `<div class="actions" style="margin-top:0">
+         <button class="secondary" type="button" onclick="openChildResults('${a.id}')">👥 Catat Hasil Anak</button>
+         <button class="danger" type="button" onclick="deleteActivity('${a.id}')">🗑 Hapus</button>
        </div>`:''}
       </div>
    </div>`}).join(''):'<div class="empty">Belum ada kegiatan tercatat.</div>'}</div>
@@ -615,21 +932,73 @@ function accessibleStudents(){
  return db.students;
 }
 function development(){
- // Menu Perkembangan hanya menampilkan anak yang kelasnya masih memiliki
- // kegiatan aktif/tercatat. Jika seluruh kegiatan kelas dihapus, nama anak
- // tidak lagi muncul di sini sehingga tampilan Kegiatan dan Perkembangan sinkron.
+ // Perkembangan bukan salinan menu Kegiatan. Menu ini berfungsi sebagai
+ // ruang asesmen: membaca capaian anak, status BB/MB/BSH/BSB, ringkasan
+ // perkembangan, dan bukti fisik. Sumber datanya tetap tersinkron dari Kegiatan.
  pruneOrphanDevelopmentNotes();
  save();
  const accessible=accessibleStudents();
  const list=accessible.filter(st=>hasActivitiesForStudent(st.id));
+ const allResults=(db.childResults||[]).filter(r=>list.some(s=>s.id===r.studentId));
+ const countStatus=status=>allResults.filter(r=>r.status===status).length;
  const totalNotes=list.reduce((n,s)=>n+(session.role==='parent'?parentSyncedNotes(s.id):db.notes.filter(x=>x.studentId===s.id)).length,0);
- content.innerHTML=`<div class="section">
-   <div class="section-head"><div><h3>Catatan Perkembangan Anak</h3><div class="muted">Data perkembangan hanya tampil untuk anak pada kelas yang masih memiliki kegiatan tercatat. Jika kegiatan dihapus, data otomatis dan nama anak terkait tidak ditampilkan.</div></div>${session.role!=='parent'?'<button class="primary" onclick="openNote()">+ Catat Perkembangan</button>':''}</div>
-   <div class="notice">Total catatan perkembangan pada data yang dapat Anda akses: <b>${totalNotes}</b>.</div>
-   <div class="list">${list.length?list.map(st=>{
-      const notes=(session.role==='parent'?parentSyncedNotes(st.id):db.notes.filter(n=>n.studentId===st.id)).slice().sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-      return `<div class="item"><div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><div><h4>${st.name}</h4><p>Kelas ${st.class} • ${notes.length} catatan perkembangan</p>${notes.slice(0,2).map(n=>`<div class="muted"><b>${n.area}</b> — ${n.text.split('\n')[0]}</div>`).join('')}</div><div class="actions" style="margin-top:0"><button class="secondary" onclick="studentDetail('${st.id}')">Lihat</button>${session.role!=='parent'?`<button class="secondary" onclick="openPortfolioForStudent('${st.id}')">📎 Upload Bukti</button><button class="danger" onclick="deleteDevelopmentData('${st.id}')">🗑 Hapus</button>`:''}</div></div></div>`;
-   }).join(''):'<div class="empty">Belum ada kegiatan tercatat. Data anak akan muncul di menu Perkembangan setelah kegiatan untuk kelasnya dicatat.</div>'}</div>
+ const totalEvidence=db.portfolios.filter(p=>list.some(s=>s.id===p.studentId)).length;
+ content.innerHTML=`<div class="development-page">
+   <div class="section development-hero">
+     <div class="development-hero-text">
+       <span class="development-kicker">ASESMEN PERKEMBANGAN PAUD</span>
+       <h3>Perkembangan Anak</h3>
+       <p>Menu ini digunakan untuk melihat dan menindaklanjuti perkembangan setiap anak berdasarkan hasil kegiatan, tingkat keberhasilan, catatan guru, dan bukti fisik. <b>Kegiatan</b> mencatat pengalaman belajar; <b>Perkembangan</b> membaca capaian anak dari pengalaman tersebut.</p>
+     </div>
+     ${session.role!=='parent'?'<button class="primary" onclick="openNote()">+ Catat Perkembangan</button>':''}
+   </div>
+
+   <div class="development-summary">
+     <div class="development-stat"><span>Anak Terpantau</span><b>${list.length}</b><small>anak dengan kegiatan tercatat</small></div>
+     <div class="development-stat status-bb-box"><span>BB</span><b>${countStatus('BB')}</b><small>Belum Berkembang</small></div>
+     <div class="development-stat status-mb-box"><span>MB</span><b>${countStatus('MB')}</b><small>Mulai Berkembang</small></div>
+     <div class="development-stat status-bsh-box"><span>BSH</span><b>${countStatus('BSH')}</b><small>Berkembang Sesuai Harapan</small></div>
+     <div class="development-stat status-bsb-box"><span>BSB</span><b>${countStatus('BSB')}</b><small>Berkembang Sangat Baik</small></div>
+   </div>
+
+   <div class="section development-focus">
+     <div class="section-head"><div><h3>Fokus Pemantauan</h3><div class="muted">Ringkasan data asesmen, bukan daftar kegiatan harian.</div></div></div>
+     <div class="development-focus-grid">
+       <div><span>Catatan perkembangan</span><b>${totalNotes}</b></div>
+       <div><span>Hasil asesmen anak</span><b>${allResults.length}</b></div>
+       <div><span>Bukti fisik</span><b>${totalEvidence}</b></div>
+     </div>
+   </div>
+
+   <div class="section">
+     <div class="section-head"><div><h3>Profil Perkembangan Setiap Anak</h3></div></div>
+     <div class="development-student-grid">${list.length?list.map(st=>{
+       const results=(session.role==='parent'?[]:(db.childResults||[]).filter(r=>r.studentId===st.id));
+       const notes=(session.role==='parent'?parentSyncedNotes(st.id):db.notes.filter(n=>n.studentId===st.id)).slice().sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+       const evidence=db.portfolios.filter(p=>p.studentId===st.id);
+       const latest=results.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||''))[0];
+       const assessed=results.length;
+       const statusText=latest?`${latest.status} — ${statusLabel(latest.status)}`:'Belum ada asesmen individual';
+       const statusCls=latest?`status-${latest.status.toLowerCase()}`:'';
+       return `<article class="development-student-card">
+         <div class="development-student-head">
+           <div><h4>${st.name}</h4><span class="development-class">Kelas ${st.class}</span></div>
+           <span class="development-assessed">${assessed} asesmen</span>
+         </div>
+         <div class="development-latest ${statusCls}"><span>Perkembangan terakhir</span><b>${statusText}</b>${latest?`<small>${latest.date} • ${latest.activityTitle}</small>`:''}</div>
+         <div class="development-mini-grid">
+           <div><b>${assessed}</b><span>Hasil kegiatan</span></div>
+           <div><b>${notes.length}</b><span>Catatan</span></div>
+           <div><b>${evidence.length}</b><span>Bukti fisik</span></div>
+         </div>
+         ${notes.length?`<div class="development-note-preview"><b>Catatan terbaru</b><p>${String(notes[0].text||'').split('\n')[0]}</p></div>`:'<div class="development-note-preview empty-note">Belum ada catatan perkembangan.</div>'}
+         <div class="actions development-card-actions">
+           <button class="primary" onclick="studentDetail('${st.id}')">Lihat Perkembangan</button>
+           ${session.role!=='parent'?`<button class="secondary" onclick="openPortfolioForStudent('${st.id}')">📎 Bukti Fisik</button><button class="danger" onclick="deleteDevelopmentData('${st.id}')">🗑 Hapus Data</button>`:''}
+         </div>
+       </article>`;
+     }).join(''):'<div class="empty">Belum ada kegiatan tercatat. Data perkembangan anak akan muncul setelah kegiatan untuk kelasnya dicatat.</div>'}</div>
+   </div>
  </div>`;
 }
 function deleteDevelopmentData(studentId){
@@ -747,6 +1116,7 @@ function deleteNote(noteId, studentId=''){
  const n=db.notes.find(x=>x.id===noteId);
  if(!n) return;
  if(confirm('Hapus catatan perkembangan ini?')){
+   markSyncDeleted('notes',n);
    db.notes=db.notes.filter(x=>x.id!==noteId);
    save();
    if(studentId){studentDetail(studentId)}else development();
@@ -891,9 +1261,14 @@ function savePortfolio(){
 }
 
 function portfolio(){
+ // Portofolio mengikuti sumber kelas yang sama dengan menu Anak, Kegiatan, dan Perkembangan.
+ // Guru hanya melihat anak pada kelas saat login; Admin tetap melihat seluruh kelas;
+ // Orang Tua hanya melihat anak yang dipilih saat login.
+ const visibleStudents=accessibleStudents();
+ const visibleStudentIds=new Set(visibleStudents.map(s=>s.id));
  const studentId=session.role==='parent'&&session.studentId?session.studentId:null;
- const manual=(session.role==='parent'?db.portfolios.filter(p=>p.studentId===studentId):db.portfolios).slice().reverse();
- const results=sortResultsByActivityOrder(session.role==='parent'?(db.childResults||[]).filter(r=>r.studentId===studentId):(db.childResults||[]));
+ const manual=(db.portfolios||[]).filter(p=>visibleStudentIds.has(p.studentId) && (!studentId || p.studentId===studentId)).slice().reverse();
+ const results=sortResultsByActivityOrder((db.childResults||[]).filter(r=>visibleStudentIds.has(r.studentId) && (!studentId || r.studentId===studentId)));
 
  content.innerHTML=`<div class="section">
   <div class="section-head"><div><h3>Portofolio Anak</h3><div class="muted">Seluruh hasil kegiatan individual tersinkron otomatis ke portofolio. Bukti fisik diunggah melalui menu Catatan Perkembangan pada nama masing-masing anak dan otomatis tersinkron ke portofolio.</div></div></div>
@@ -917,6 +1292,41 @@ function portfolio(){
   <h4 style="margin-top:24px">Bukti Fisik Hasil Anak</h4>
   <div class="gallery">${manual.length?manual.map(p=>`<div class="card">${p.image?(p.fileType==='application/pdf'?`<div class="photo" style="display:grid;place-items:center">📄 PDF</div>`:(p.fileType||'').includes('word')||p.fileName?.match(/\.docx?$/i)?`<div class="photo" style="display:grid;place-items:center">📝 WORD</div>`:`<img class="photo" src="${p.image}">`):'<div class="photo" style="display:grid;place-items:center">📷</div>'}<h4>${db.students.find(s=>s.id===p.studentId)?.name||''}</h4><p><b>${p.title||'Bukti Fisik'}</b></p><p class="muted">${p.caption||''}</p><small>${p.date}${p.fileName?' • '+p.fileName:''}</small></div>`).join(''):'<div class="empty">Belum ada bukti fisik yang diunggah.</div>'}</div>
  </div>`
+}
+
+function reportSafeFileName(name){
+ return String(name||'Anak').replace(/[^a-z0-9_-]+/gi,'_').replace(/^_+|_+$/g,'')||'Anak';
+}
+function dataUrlToUint8Array(dataUrl){
+ const base64=String(dataUrl||'').split(',')[1]||'';
+ const binary=atob(base64); const bytes=new Uint8Array(binary.length);
+ for(let i=0;i<binary.length;i++) bytes[i]=binary.charCodeAt(i);
+ return bytes;
+}
+function isImageEvidence(p){ return !!(p?.image && String(p.fileType||'').toLowerCase().startsWith('image/')); }
+function downloadEvidence(id){
+ const p=(db.portfolios||[]).find(x=>x.id===id); if(!p?.image)return;
+ const a=document.createElement('a'); a.href=p.image; a.download=p.fileName||`${reportSafeFileName(p.title||'Bukti_Fisik')}.png`; document.body.appendChild(a); a.click(); a.remove();
+}
+let reportAutoSaveTimers={};
+function autoSaveReportDraft(studentId){
+ clearTimeout(reportAutoSaveTimers[studentId]);
+ reportAutoSaveTimers[studentId]=setTimeout(()=>{
+  const student=db.students.find(s=>s.id===studentId); if(!student)return;
+  const existing=(db.reportDrafts||[]).find(d=>d.studentId===studentId)||{};
+  const draft={id:existing.id||'rd_'+studentId,studentId,
+   summary:(document.getElementById('repSummary')?.value||'').trim(),
+   strengths:(document.getElementById('repStrengths')?.value||'').trim(),
+   development:(document.getElementById('repDevelopment')?.value||'').trim(),
+   recommendation:(document.getElementById('repRecommendation')?.value||'').trim(),
+   updatedAt:new Date().toISOString()};
+  db.reportDrafts=(db.reportDrafts||[]).filter(d=>d.studentId!==studentId); db.reportDrafts.push(draft); save();
+ },700);
+}
+function bindReportEditorAutoSave(studentId){
+ ['repSummary','repStrengths','repDevelopment','repRecommendation'].forEach(id=>{
+  const el=document.getElementById(id); if(el)el.addEventListener('input',()=>autoSaveReportDraft(studentId));
+ });
 }
 
 function getReportScope(){
@@ -954,12 +1364,13 @@ function getStudentReportData(studentId){
    .slice()
    .sort((a,b)=>(a.date||'').localeCompare(b.date||''));
  const evidence=(db.portfolios||[]).filter(p=>p.studentId===studentId);
- return {student,results,attendance,notes,evidence};
+ const draft=(db.reportDrafts||[]).find(d=>d.studentId===studentId)||null;
+ return {student,results,attendance,notes,evidence,draft};
 }
 function buildChildReportText(studentId){
  const x=getStudentReportData(studentId);
  if(!x) return 'Data anak tidak ditemukan.';
- const {student,results,attendance,notes,evidence}=x;
+ const {student,results,attendance,notes,evidence,draft}=x;
  const count=status=>results.filter(r=>r.status===status).length;
  const hadir=attendance.filter(a=>a.status==='Hadir').length;
  const kegiatan=results.length
@@ -983,55 +1394,157 @@ Tanggal Laporan: ${today()}
 1. RINGKASAN HASIL PERKEMBANGAN
 BB: ${count('BB')} | MB: ${count('MB')} | BSH: ${count('BSH')} | BSB: ${count('BSB')}
 
-2. KEHADIRAN
+2. CATATAN LAPORAN GURU
+${draft?.summary||'Belum ada ringkasan laporan guru.'}
+
+3. KEKUATAN ANAK
+${draft?.strengths||'Belum ada catatan kekuatan anak.'}
+
+4. HAL YANG PERLU DIKEMBANGKAN
+${draft?.development||'Belum ada catatan area yang perlu dikembangkan.'}
+
+5. REKOMENDASI UNTUK ORANG TUA
+${draft?.recommendation||'Belum ada rekomendasi khusus.'}
+
+6. KEHADIRAN
 Jumlah catatan kehadiran: ${attendance.length}
 Hadir: ${hadir}
 
-3. RIWAYAT KEGIATAN DAN HASIL INDIVIDU
+7. RIWAYAT KEGIATAN DAN HASIL INDIVIDU
 ${kegiatan}
 
-4. CATATAN PERKEMBANGAN
+8. CATATAN PERKEMBANGAN TAMBAHAN
 ${perkembangan}
 
-5. BUKTI FISIK
+9. BUKTI FISIK
 ${bukti}
 
-Laporan ini tergenerate otomatis dari data kegiatan, hasil individu anak, catatan perkembangan, kehadiran, dan bukti fisik yang tersimpan pada aplikasi.`;
+Laporan ini tergenerate dari data kegiatan, hasil individu anak, catatan perkembangan, kehadiran, dan bukti fisik yang tersimpan pada aplikasi.`;
+}
+function openReportEditor(studentId){
+ const x=getStudentReportData(studentId); if(!x)return;
+ const d=x.draft||{};
+ modalTitle.textContent=`Edit Laporan — ${x.student.name}`;
+ modalBody.innerHTML=`<label>Ringkasan Perkembangan</label><textarea id="repSummary" rows="5" placeholder="Ringkasan perkembangan anak selama periode laporan...">${escapeReportText(d.summary||'')}</textarea>
+ <label>Kekuatan Anak</label><textarea id="repStrengths" rows="4" placeholder="Kekuatan atau capaian yang terlihat pada anak...">${escapeReportText(d.strengths||'')}</textarea>
+ <label>Hal yang Perlu Dikembangkan</label><textarea id="repDevelopment" rows="4" placeholder="Kemampuan yang masih perlu diperkuat...">${escapeReportText(d.development||'')}</textarea>
+ <label>Rekomendasi untuk Orang Tua</label><textarea id="repRecommendation" rows="4" placeholder="Kegiatan sederhana yang dapat dilakukan di rumah...">${escapeReportText(d.recommendation||'')}</textarea>
+ <div class="actions"><button id="saveReportDraftButton" class="primary" type="button">💾 Simpan Laporan</button><button id="cancelReportEditButton" class="secondary" type="button">Batal</button></div>`;
+ modal.classList.remove('hidden');
+ modal.style.zIndex='100000';
+ requestAnimationFrame(()=>{
+   bindReportEditorAutoSave(studentId);
+   document.getElementById('saveReportDraftButton')?.addEventListener('click',()=>saveReportDraft(studentId));
+   document.getElementById('cancelReportEditButton')?.addEventListener('click',closeModal);
+ });
+}
+function saveReportDraft(studentId){
+ const student=db.students.find(s=>s.id===studentId); if(!student)return;
+ const draft={id:'rd_'+studentId,studentId,summary:(document.getElementById('repSummary')?.value||'').trim(),strengths:(document.getElementById('repStrengths')?.value||'').trim(),development:(document.getElementById('repDevelopment')?.value||'').trim(),recommendation:(document.getElementById('repRecommendation')?.value||'').trim(),updatedAt:new Date().toISOString()};
+ db.reportDrafts=(db.reportDrafts||[]).filter(d=>d.studentId!==studentId);
+ db.reportDrafts.push(draft);
+ save(); closeModal(); window.reportStudentId=studentId; reports();
+}
+function deleteChildReport(studentId){
+ const st=db.students.find(s=>s.id===studentId); if(!st)return;
+ if(!confirm(`Hapus laporan tersimpan untuk ${st.name}?\n\nData anak, kegiatan, hasil anak, perkembangan, absensi, dan portofolio tidak akan dihapus.`))return;
+ const draft=(db.reportDrafts||[]).find(d=>d.studentId===studentId); if(draft)markSyncDeleted('reportDrafts',draft);
+ db.reportDrafts=(db.reportDrafts||[]).filter(d=>d.studentId!==studentId);
+ const docs=(db.reports||[]).filter(r=>r.studentId===studentId); if(docs.length)markSyncDeleted('reports',docs);
+ db.reports=(db.reports||[]).filter(r=>r.studentId!==studentId);
+ save(); reports();
+}
+function pdfSafeText(v){return String(v??'').replace(/\s+/g,' ').trim();}
+function pdfDrawWrapped(doc,text,x,y,maxWidth,lineHeight=5,fontSize=10,bold=false){
+ doc.setFont('helvetica',bold?'bold':'normal');doc.setFontSize(fontSize);
+ const lines=doc.splitTextToSize(pdfSafeText(text),maxWidth);
+ for(const line of lines){if(y>282){doc.addPage();y=16;doc.setFont('helvetica',bold?'bold':'normal');doc.setFontSize(fontSize);}doc.text(line,x,y);y+=lineHeight;}
+ return y;
+}
+function pdfHeading(doc,text,y,size=13){
+ if(y>275){doc.addPage();y=16;}
+ doc.setFont('helvetica','bold');doc.setFontSize(size);doc.text(pdfSafeText(text),15,y);return y+7;
+}
+function pdfAddEvidenceImage(doc,p,y){
+ if(!isImageEvidence(p)||!p.image)return y;
+ try{
+   const prop=doc.getImageProperties(p.image);const maxW=170,maxH=92;
+   const ratio=Math.min(maxW/prop.width,maxH/prop.height);const w=prop.width*ratio,h=prop.height*ratio;
+   if(y+h>282){doc.addPage();y=16;}
+   doc.addImage(p.image,'JPEG',20,y,w,h,undefined,'FAST');
+   return y+h+6;
+ }catch(e){
+   try{const prop=doc.getImageProperties(p.image);const maxW=170,maxH=92;const ratio=Math.min(maxW/prop.width,maxH/prop.height);const w=prop.width*ratio,h=prop.height*ratio;if(y+h>282){doc.addPage();y=16;}doc.addImage(p.image,'PNG',20,y,w,h,undefined,'FAST');return y+h+6;}catch(e2){return y;}
+ }
+}
+async function downloadChildReportPDF(){
+ const id=getSelectedReportStudentId(), x=getStudentReportData(id); if(!x)return;
+ if(!window.jspdf?.jsPDF){alert('Modul PDF belum siap. Silakan buka aplikasi dengan koneksi internet aktif satu kali agar modul PDF termuat.');return;}
+ const {jsPDF}=window.jspdf;const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4',compress:true});
+ const {student,results,attendance,notes,evidence,draft}=x;let y=18;
+ doc.setProperties({title:`Laporan Perkembangan ${student.name}`});
+ doc.setFont('helvetica','bold');doc.setFontSize(17);doc.text('LAPORAN PERKEMBANGAN ANAK',15,y);y+=9;
+ y=pdfDrawWrapped(doc,`Nama Anak: ${student.name}`,15,y,180,5,11,true);
+ y=pdfDrawWrapped(doc,`Kelas: ${student.class}${student.parent?'   Orang Tua: '+student.parent:''}`,15,y,180,5,10,false);
+ y=pdfDrawWrapped(doc,`Tanggal Laporan: ${today()}`,15,y,180,5,10,false);y+=4;
+ const counts={BB:0,MB:0,BSH:0,BSB:0};results.forEach(r=>{if(counts[r.status]!=null)counts[r.status]++});
+ y=pdfHeading(doc,'Ringkasan Hasil Perkembangan',y);
+ y=pdfDrawWrapped(doc,`BB: ${counts.BB}    MB: ${counts.MB}    BSH: ${counts.BSH}    BSB: ${counts.BSB}`,15,y,180,5,10,true);y+=3;
+ const sections=[['Catatan Laporan Guru',draft?.summary||'Belum ada ringkasan laporan guru.'],['Kekuatan Anak',draft?.strengths||'Belum ada catatan kekuatan anak.'],['Hal yang Perlu Dikembangkan',draft?.development||'Belum ada catatan area yang perlu dikembangkan.'],['Rekomendasi untuk Orang Tua',draft?.recommendation||'Belum ada rekomendasi khusus.']];
+ for(const [h,t] of sections){y=pdfHeading(doc,h,y,12);y=pdfDrawWrapped(doc,t,15,y,180,5,10,false);y+=3;}
+ y=pdfHeading(doc,'Riwayat Kegiatan dan Keberhasilan Anak',y,12);
+ if(results.length){for(let i=0;i<results.length;i++){const r=results[i];y=pdfDrawWrapped(doc,`${i+1}. ${r.date||'-'} — ${r.activityTitle||'-'}`,15,y,180,5,10,true);y=pdfDrawWrapped(doc,`Keberhasilan: ${r.status||'-'} — ${statusLabel(r.status)}`,20,y,175,5,9,false);y=pdfDrawWrapped(doc,`Ringkasan: ${r.shortNote||statusSummary(r.status,student.name,r.activityTitle)}`,20,y,175,5,9,false);y=pdfDrawWrapped(doc,`Catatan perkembangan: ${cleanGeneratedNote(r.note)||statusTeacherNote(r.status,student.name,r.activityTitle)}${r.extraNote?' | Catatan tambahan: '+r.extraNote:''}`,20,y,175,5,9,false);y+=3;}}else y=pdfDrawWrapped(doc,'Belum ada hasil kegiatan individual.',15,y,180,5,10,false);
+ y=pdfHeading(doc,'Kehadiran',y,12);y=pdfDrawWrapped(doc,attendance.length?`Jumlah catatan: ${attendance.length}    Hadir: ${attendance.filter(a=>a.status==='Hadir').length}`:'Belum ada catatan kehadiran.',15,y,180,5,10,false);y+=3;
+ y=pdfHeading(doc,'Catatan Perkembangan Tambahan',y,12);
+ if(notes.length){notes.forEach((n,i)=>{y=pdfDrawWrapped(doc,`${i+1}. ${n.date||'-'} — ${n.area||'Perkembangan'}`,15,y,180,5,10,true);y=pdfDrawWrapped(doc,n.text||'',20,y,175,5,9,false);y+=2;});}else y=pdfDrawWrapped(doc,'Belum ada catatan perkembangan tambahan.',15,y,180,5,10,false);
+ y=pdfHeading(doc,'Bukti Fisik Anak',y,12);
+ if(evidence.length){for(let i=0;i<evidence.length;i++){const p=evidence[i];y=pdfDrawWrapped(doc,`${i+1}. ${p.title||p.fileName||'Bukti Fisik'}${p.date?' — '+p.date:''}`,15,y,180,5,10,true);if(isImageEvidence(p)){y=pdfAddEvidenceImage(doc,p,y);}else{y=pdfDrawWrapped(doc,`File bukti: ${p.fileName||'Bukti fisik tersimpan di aplikasi.'}`,20,y,175,5,9,false);}if(p.caption)y=pdfDrawWrapped(doc,p.caption,20,y,175,5,9,false);y+=3;}}else y=pdfDrawWrapped(doc,'Belum ada bukti fisik yang diunggah.',15,y,180,5,10,false);
+ doc.save(`Laporan_Perkembangan_${reportSafeFileName(student.name)}.pdf`);
+}
+function wordEscape(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function wordImageHtml(p){return isImageEvidence(p)&&p.image?`<div style="margin:8pt 0"><img src="${p.image}" style="max-width:520px;max-height:360px;object-fit:contain;border:1px solid #ddd"></div>`:'';}
+function buildWordHtmlReport(x){
+ const {student,results,attendance,notes,evidence,draft}=x;const counts={BB:0,MB:0,BSH:0,BSB:0};results.forEach(r=>{if(counts[r.status]!=null)counts[r.status]++});
+ let h=`<!doctype html><html><head><meta charset="utf-8"><title>Laporan Perkembangan ${wordEscape(student.name)}</title><style>body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.45;margin:28pt}h1{font-size:18pt}h2{font-size:13pt;margin-top:18pt}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbb;padding:6pt;vertical-align:top}img{max-width:520px;max-height:360px}</style></head><body>`;
+ h+=`<h1>LAPORAN PERKEMBANGAN ANAK</h1><p><b>Nama Anak:</b> ${wordEscape(student.name)}<br><b>Kelas:</b> ${wordEscape(student.class)}<br><b>Orang Tua:</b> ${wordEscape(student.parent||'-')}<br><b>Tanggal Laporan:</b> ${wordEscape(today())}</p>`;
+ h+=`<h2>Ringkasan Hasil Perkembangan</h2><p><b>BB:</b> ${counts.BB} &nbsp; <b>MB:</b> ${counts.MB} &nbsp; <b>BSH:</b> ${counts.BSH} &nbsp; <b>BSB:</b> ${counts.BSB}</p>`;
+ const secs=[['Catatan Laporan Guru',draft?.summary||'Belum ada ringkasan laporan guru.'],['Kekuatan Anak',draft?.strengths||'Belum ada catatan kekuatan anak.'],['Hal yang Perlu Dikembangkan',draft?.development||'Belum ada catatan area yang perlu dikembangkan.'],['Rekomendasi untuk Orang Tua',draft?.recommendation||'Belum ada rekomendasi khusus.']];for(const [t,v] of secs)h+=`<h2>${t}</h2><p>${wordEscape(v).replace(/\n/g,'<br>')}</p>`;
+ h+='<h2>Riwayat Kegiatan dan Keberhasilan Anak</h2>';
+ if(results.length){h+='<table><tr><th>Tanggal</th><th>Kegiatan</th><th>Keberhasilan</th><th>Catatan</th></tr>';for(const r of results)h+=`<tr><td>${wordEscape(r.date||'-')}</td><td>${wordEscape(r.activityTitle||'-')}</td><td>${wordEscape(r.status||'-')} — ${wordEscape(statusLabel(r.status))}</td><td>${wordEscape((r.shortNote||statusSummary(r.status,student.name,r.activityTitle))+' '+(cleanGeneratedNote(r.note)||statusTeacherNote(r.status,student.name,r.activityTitle))+(r.extraNote?' '+r.extraNote:'' )).replace(/\n/g,'<br>')}</td></tr>`;h+='</table>';}else h+='<p>Belum ada hasil kegiatan individual.</p>';
+ h+=`<h2>Kehadiran</h2><p>${attendance.length?`Jumlah catatan: ${attendance.length} — Hadir: ${attendance.filter(a=>a.status==='Hadir').length}`:'Belum ada catatan kehadiran.'}</p>`;
+ h+='<h2>Catatan Perkembangan Tambahan</h2>';if(notes.length){for(const n of notes)h+=`<p><b>${wordEscape(n.date||'-')} — ${wordEscape(n.area||'Perkembangan')}</b><br>${wordEscape(n.text||'').replace(/\n/g,'<br>')}</p>`;}else h+='<p>Belum ada catatan perkembangan tambahan.</p>';
+ h+='<h2>Bukti Fisik Anak</h2>';if(evidence.length){evidence.forEach((p,i)=>{h+=`<div style="margin-bottom:18pt"><p><b>${i+1}. ${wordEscape(p.title||p.fileName||'Bukti Fisik')}${p.date?' — '+wordEscape(p.date):''}</b></p>`;h+=wordImageHtml(p);if(!isImageEvidence(p))h+=`<p>File bukti: ${wordEscape(p.fileName||'Bukti fisik tersimpan di aplikasi.')}</p>`;if(p.caption)h+=`<p>${wordEscape(p.caption).replace(/\n/g,'<br>')}</p>`;h+='</div>';});}else h+='<p>Belum ada bukti fisik yang diunggah.</p>';
+ return h+'</body></html>';
+}
+async function downloadChildReportWord(){
+ const id=getSelectedReportStudentId(),x=getStudentReportData(id);if(!x)return;
+ // Gunakan format Word-compatible HTML agar tidak bergantung pada CDN docx.
+ // File dibuka langsung oleh Microsoft Word/LibreOffice dan gambar bukti fisik ikut tertanam sebagai data URL.
+ try{
+   const html=buildWordHtmlReport(x);const blob=new Blob([html],{type:'application/msword;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`Laporan_Perkembangan_${reportSafeFileName(x.student.name)}.doc`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+ }catch(err){console.error('Word:',err);alert('Word belum berhasil dibuat. Silakan coba lagi.');}
 }
 function buildChildReportPreview(studentId){
  const x=getStudentReportData(studentId);
  if(!x) return '<div class="empty">Data anak tidak ditemukan.</div>';
- const {student,results,attendance,notes,evidence}=x;
+ const {student,results,attendance,notes,evidence,draft}=x;
  const counts={BB:0,MB:0,BSH:0,BSB:0};
  results.forEach(r=>{if(counts[r.status]!==undefined)counts[r.status]++});
- const rows=results.length?results.map(r=>`<tr>
-   <td>${escapeReportText(r.date)}</td>
-   <td>${escapeReportText(r.activityTitle)}</td>
-   <td><span class="badge ${statusClass(r.status)}">${escapeReportText(r.status)} — ${escapeReportText(statusLabel(r.status))}</span></td>
-   <td>${escapeReportText(r.shortNote||statusSummary(r.status,student.name,r.activityTitle))}</td>
-   <td style="white-space:pre-line">${escapeReportText(cleanGeneratedNote(r.note)||statusTeacherNote(r.status,student.name,r.activityTitle))}${r.extraNote?'<br><br><b>Catatan tambahan:</b><br>'+escapeReportText(r.extraNote):''}</td>
- </tr>`).join(''):'<tr><td colspan="5" class="muted">Belum ada hasil kegiatan individual.</td></tr>';
+ const rows=results.length?results.map(r=>`<tr><td>${escapeReportText(r.date)}</td><td>${escapeReportText(r.activityTitle)}</td><td><span class="badge ${statusClass(r.status)}">${escapeReportText(r.status)} — ${escapeReportText(statusLabel(r.status))}</span></td><td>${escapeReportText(r.shortNote||statusSummary(r.status,student.name,r.activityTitle))}</td><td style="white-space:pre-line">${escapeReportText(cleanGeneratedNote(r.note)||statusTeacherNote(r.status,student.name,r.activityTitle))}${r.extraNote?'<br><br><b>Catatan tambahan:</b><br>'+escapeReportText(r.extraNote):''}</td></tr>`).join(''):'<tr><td colspan="5" class="muted">Belum ada hasil kegiatan individual.</td></tr>';
  const noteRows=notes.length?notes.map(n=>`<div class="item"><b>${escapeReportText(n.area||'Catatan perkembangan')}</b><p style="white-space:pre-line">${escapeReportText(n.text||'')}</p><small>${escapeReportText(n.date||'')}</small></div>`).join(''):'<div class="empty">Belum ada catatan perkembangan tambahan.</div>';
- return `<div class="report-child-header">
-   <h3 style="margin:0 0 6px">${escapeReportText(student.name)}</h3>
-   <div class="muted">Kelas ${escapeReportText(student.class)}${student.parent?' • Orang Tua: '+escapeReportText(student.parent):''}</div>
-  </div>
-  <div class="cards" style="margin-top:16px">
-   <div class="card"><div class="muted">BB</div><div class="metric">${counts.BB}</div></div>
-   <div class="card"><div class="muted">MB</div><div class="metric">${counts.MB}</div></div>
-   <div class="card"><div class="muted">BSH</div><div class="metric">${counts.BSH}</div></div>
-   <div class="card"><div class="muted">BSB</div><div class="metric">${counts.BSB}</div></div>
-  </div>
-  <div class="section"><h4>Riwayat Kegiatan dan Keberhasilan Anak</h4>
-   <div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Kegiatan</th><th>Keberhasilan</th><th>Ringkasan</th><th>Catatan Perkembangan</th></tr></thead><tbody>${rows}</tbody></table></div>
-  </div>
-  <div class="section"><h4>Kehadiran</h4>
-   <div class="muted">${attendance.length?`${attendance.length} catatan • ${attendance.filter(a=>a.status==='Hadir').length} hadir`:'Belum ada catatan kehadiran.'}</div>
-  </div>
-  <div class="section"><h4>Catatan Perkembangan</h4>${noteRows}</div>
-  <div class="section"><h4>Bukti Fisik Anak</h4><div class="muted">${evidence.length?`${evidence.length} bukti fisik telah tersinkron dari menu Perkembangan.`:'Belum ada bukti fisik yang diunggah.'}</div></div>`;
+ return `<div id="reportDocument" class="report-document"><div class="report-child-header"><h3 style="margin:0 0 6px">Laporan Perkembangan Anak</h3><div><b>${escapeReportText(student.name)}</b> • Kelas ${escapeReportText(student.class)}${student.parent?' • Orang Tua: '+escapeReportText(student.parent):''}</div><div class="muted">Tanggal laporan: ${today()}</div></div>
+ <div class="cards" style="margin-top:16px"><div class="card"><div class="muted">BB</div><div class="metric">${counts.BB}</div></div><div class="card"><div class="muted">MB</div><div class="metric">${counts.MB}</div></div><div class="card"><div class="muted">BSH</div><div class="metric">${counts.BSH}</div></div><div class="card"><div class="muted">BSB</div><div class="metric">${counts.BSB}</div></div></div>
+ <div class="section"><h4>Catatan Laporan Guru</h4><p style="white-space:pre-line">${escapeReportText(draft?.summary||'Belum ada ringkasan laporan guru.')}</p><h4>Kekuatan Anak</h4><p style="white-space:pre-line">${escapeReportText(draft?.strengths||'Belum ada catatan kekuatan anak.')}</p><h4>Hal yang Perlu Dikembangkan</h4><p style="white-space:pre-line">${escapeReportText(draft?.development||'Belum ada catatan area yang perlu dikembangkan.')}</p><h4>Rekomendasi untuk Orang Tua</h4><p style="white-space:pre-line">${escapeReportText(draft?.recommendation||'Belum ada rekomendasi khusus.')}</p></div>
+ <div class="section"><h4>Riwayat Kegiatan dan Keberhasilan Anak</h4><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Kegiatan</th><th>Keberhasilan</th><th>Ringkasan</th><th>Catatan Perkembangan</th></tr></thead><tbody>${rows}</tbody></table></div></div>
+ <div class="section"><h4>Kehadiran</h4><div class="muted">${attendance.length?`${attendance.length} catatan • ${attendance.filter(a=>a.status==='Hadir').length} hadir`:'Belum ada catatan kehadiran.'}</div></div>
+ <div class="section"><h4>Catatan Perkembangan Tambahan</h4>${noteRows}</div>
+ <div class="section"><h4>Bukti Fisik Anak</h4>${evidence.length?`<div class="report-evidence-grid">${evidence.map((p,i)=>`<div class="card report-evidence-card"><div style="font-weight:700;margin-bottom:8px">Bukti ${i+1} — ${escapeReportText(p.title||p.fileName||'Bukti Fisik')}</div>${isImageEvidence(p)?`<img src="${p.image}" alt="Bukti fisik ${i+1}" style="display:block;width:100%;max-height:360px;object-fit:contain;border-radius:12px;background:#f5f7f6">`:`<div class="muted">File bukti: ${escapeReportText(p.fileName||'Bukti fisik')}</div>`}${p.caption?`<p class="muted" style="white-space:pre-line">${escapeReportText(p.caption)}</p>`:''}<small>${escapeReportText(p.date||'')}</small></div>`).join('')}</div>`:'<div class="empty">Belum ada bukti fisik yang diunggah.</div>'}</div></div>`;
 }
 function reports(){
+ const reportModal=document.getElementById('modal');
+ const reportModalTitle=document.getElementById('modalTitle');
+ const reportEditorOpen=!!(reportModal && !reportModal.classList.contains('hidden') && String(reportModalTitle?.textContent||'').startsWith('Edit Laporan —'));
+ if(reportModal && !reportEditorOpen) reportModal.classList.add('hidden');
  const scope=getReportScope();
  if(!scope.students.length){
    content.innerHTML='<div class="section"><div class="empty">Belum ada data anak yang dapat dibuatkan laporan.</div></div>';
@@ -1039,23 +1552,24 @@ function reports(){
  }
  const selectedId=getSelectedReportStudentId();
  const selected=db.students.find(s=>s.id===selectedId);
- const files=(db.reports||[]).filter(r=>r.studentId===selectedId).slice().reverse();
  const selector=session.role==='parent'
    ?''
    :`<div style="max-width:420px;margin-bottom:16px"><label>Pilih Anak untuk Laporan</label><select onchange="selectReportStudent(this.value)">${scope.students.map(s=>`<option value="${s.id}" ${s.id===selectedId?'selected':''}>${escapeReportText(s.name)} — Kelas ${escapeReportText(s.class)}</option>`).join('')}</select></div>`;
  content.innerHTML=`<div class="section report-print">
-  <div class="section-head"><div><h3>Laporan Per Anak</h3><div class="muted">Pilih satu anak. Seluruh data kegiatan, keberhasilan, catatan perkembangan, kehadiran, dan bukti fisik tersinkron otomatis.</div></div></div>
+  <div class="section-head"><div><h3>Laporan Per Anak</h3></div></div>
   ${selector}
   <div id="reportPreview">${buildChildReportPreview(selectedId)}</div>
-  <div class="report-tools no-print"><button class="primary" onclick="printChildReport()">🖨 Cetak Laporan</button><button class="secondary" onclick="shareChildReport()">↗ Bagikan</button><button class="secondary" onclick="downloadChildReportText()">⬇ Unduh Laporan</button></div>
+  <div id="reportActionLayer" class="report-tools no-print report-action-layer" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px">
+   <div style="font-weight:700;color:#245a4a;margin-right:4px">Aksi Laporan</div>
+   <button type="button" class="primary report-action-button" data-report-action="edit" data-student-id="${selectedId}">✎ Edit Isi Laporan</button>
+   <button type="button" class="secondary report-action-button" data-report-action="pdf">⬇ PDF</button>
+   <button type="button" class="secondary report-action-button" data-report-action="word">⬇ Word</button>
+   <button type="button" class="secondary report-action-button" data-report-action="print">🖨 Cetak</button>
+   <button type="button" class="danger report-action-button" data-report-action="delete" data-student-id="${selectedId}">🗑 Hapus Isi Laporan</button>
+  </div>
  </div>
- <div class="section no-print">
-  <div class="section-head"><div><h3>Unggah Dokumen Laporan Anak</h3><div class="muted">Dokumen Word atau PDF disimpan untuk ${escapeReportText(selected.name)}.</div></div></div>
-  <label>Judul Dokumen</label><input id="reportTitle" placeholder="Contoh: Laporan Perkembangan Semester Ganjil">
-  <label>File Word / PDF</label><input id="reportFile" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-  <div class="actions"><button class="primary" onclick="saveChildReportFile('${selectedId}')">+ Simpan Dokumen</button></div>
-  <div class="list" style="margin-top:16px">${files.length?files.map(r=>`<div class="item"><div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><div><b>${escapeReportText(r.title)}</b><p>${escapeReportText(r.fileName||'Dokumen laporan')}</p><small>${escapeReportText(r.date||'')}</small></div><div class="actions" style="margin-top:0"><button class="secondary" onclick="downloadStoredReport('${r.id}')">⬇ Unduh</button><button class="secondary" onclick="shareStoredReport('${r.id}')">↗ Bagikan</button><button class="danger" onclick="deleteReportFile('${r.id}')">🗑 Hapus</button></div></div></div>`).join(''):'<div class="empty">Belum ada dokumen laporan untuk anak ini.</div>'}</div>
- </div>`;
+`;
+ bindReportActionButtons();
 }
 function printChildReport(){window.print()}
 async function shareChildReport(){
@@ -1072,8 +1586,10 @@ function downloadChildReportText(){
  a.href=url;a.download=`Laporan_Perkembangan_${(st?.name||'Anak').replace(/[^a-z0-9]+/gi,'_')}.txt`;a.click();URL.revokeObjectURL(url);
 }
 function saveChildReportFile(studentId){
- const f=reportFile.files[0]; if(!f){alert('Silakan pilih dokumen Word atau PDF.');return}
- const title=reportTitle.value.trim()||f.name;
+ const fileInput=document.getElementById('reportFile');
+ const titleInput=document.getElementById('reportTitle');
+ const f=fileInput?.files?.[0]; if(!f){alert('Silakan pilih dokumen Word atau PDF.');return}
+ const title=(titleInput?.value||'').trim()||f.name;
  const reader=new FileReader();
  reader.onload=()=>{
    db.reports=(db.reports||[]).filter(r=>!(r.studentId===studentId && r.fileName===f.name));
@@ -1091,7 +1607,38 @@ async function shareStoredReport(id){
  try{if(navigator.share){await navigator.share({title:r.title,text:`Dokumen laporan anak: ${r.title}`});}else{await navigator.clipboard.writeText(r.title);alert('Judul dokumen telah disalin untuk dibagikan.')}}catch(e){}
 }
 function deleteReportFile(id){
- if(confirm('Hapus dokumen laporan ini?')){db.reports=(db.reports||[]).filter(x=>x.id!==id);save();reports()}
+ if(confirm('Hapus dokumen laporan ini?')){const r=(db.reports||[]).find(x=>x.id===id);if(r)markSyncDeleted('reports',r);db.reports=(db.reports||[]).filter(x=>x.id!==id);save();reports()}
+}
+
+function runReportAction(btn){
+ const action=btn?.dataset?.reportAction;
+ const studentId=btn?.dataset?.studentId||getSelectedReportStudentId();
+ const documentId=btn?.dataset?.documentId;
+ if(!action)return;
+ try{
+   if(action==='edit') openReportEditor(studentId);
+   else if(action==='pdf') downloadChildReportPDF();
+   else if(action==='word') downloadChildReportWord();
+   else if(action==='print') printChildReport();
+   else if(action==='delete') deleteChildReport(studentId);
+   else if(action==='save-document') saveChildReportFile(studentId);
+   else if(action==='download-document') downloadStoredReport(documentId);
+   else if(action==='share-document') shareStoredReport(documentId);
+   else if(action==='delete-document') deleteReportFile(documentId);
+ }catch(err){
+   console.error('Laporan:',err);
+   alert('Tindakan Laporan gagal dijalankan: '+(err?.message||err));
+ }
+}
+function bindReportActionButtons(){
+ const buttons=document.querySelectorAll('#reportActionLayer [data-report-action], .report-action-layer [data-report-action]');
+ buttons.forEach(btn=>{
+   btn.disabled=false;
+   btn.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();runReportAction(this);});
+ });
+ document.querySelectorAll('[data-evidence-download]').forEach(btn=>{
+   btn.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();downloadEvidence(this.dataset.evidenceDownload);});
+ });
 }
 
 function info(){
@@ -1111,6 +1658,7 @@ function deleteAnnouncement(id){
  const item=db.announcements.find(a=>a.id===id);
  if(!item) return;
  if(confirm(`Hapus informasi "${item.title}"? Informasi yang dihapus tidak akan ditampilkan lagi kepada pengguna.`)){
+   markSyncDeleted('announcements',item);
    db.announcements=db.announcements.filter(a=>a.id!==id);
    save();
    info();
@@ -1120,6 +1668,6 @@ function openAnnouncement(){modalTitle.textContent='Buat Informasi';modalBody.in
 function saveAnnouncement(){db.announcements.push({id:'a'+Date.now(),title:annTitle.value,body:annBody.value,target:annTarget.value,date:today()});save();closeModal();info()}
 function closeModal(){modal.classList.add('hidden')}
 updateLoginIdentity();
-initRemoteSync();
+restoreIndexedDBBackup().then(()=>{updateLoginIdentity();if(session){renderNav();render();}initRemoteSync();}).catch(()=>initRemoteSync());
 </script>
 </body></html>
